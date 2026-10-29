@@ -1,0 +1,41 @@
+{
+  "format_version": 1,
+  "batch_id": "synthetic-review-demo-v1",
+  "entries": [
+    {
+      "identity_key": "fixture:review-demo",
+      "expected_version": 0,
+      "candidate": {
+        "schema_version": 1,
+        "payload": {
+          "labels": [
+            {
+              "language": "en",
+              "text": "Review workflow example",
+              "role": "preferred"
+            },
+            {
+              "language": "zh",
+              "text": "审阅流程示例",
+              "role": "preferred"
+            }
+          ],
+          "kind": "domain",
+          "slug": "synthetic-review-demo",
+          "definition": "Synthetic catalog entry for exercising review; not domain knowledge.",
+          "scope_note": "Fixture only; no source or seed readiness.",
+          "domain_type": "academic"
+        },
+        "provenance": {
+          "origin": "test_fixture",
+          "actor": "repository-fixture",
+          "rationale": "Reproducible manual review demonstration",
+          "generator": null,
+          "input_hash": null,
+          "evidence": [],
+          "unsupported_reason": "Synthetic data without external factual claims."
+        }
+      }
+    }
+  ]
+}

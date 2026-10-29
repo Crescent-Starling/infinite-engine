@@ -49,3 +49,7 @@ Run `make setup`, `make backend` and `make frontend` from the root (servers in s
 ## Registry R1 offline demo
 
 `uv run --frozen python -m infinite_engine.catalog` creates a temporary synthetic catalog candidate, replays it without duplication, edits it as version 2, reopens storage and checks version 1 is preserved. Expected outputs include replay_idempotent/history_preserved/restart_persisted=true, latest_version=2, status=pending_review, curated_data_created=false. This is a storage demonstration, not any of the four domain pilots or vetted seeds.
+
+## Registry R2 synthetic review demo
+
+Follow [the Registry manual demo](DOMAIN_REGISTRY.md#reproducible-manual-demo): import the synthetic review-bundle fixture, export CSV, revise a field, dry-run/apply, re-export, approve, replay and inspect curated version 2. No external facts, sources or seeds are supplied. The four domain demos remain planned.

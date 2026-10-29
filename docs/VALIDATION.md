@@ -57,3 +57,14 @@ No domain dataset, license, source-verification, migration, AI or course benchma
 - Wheel build initially failed to resolve build dependencies because sandbox DNS could not reach PyPI. `uv build --offline --wheel --out-dir /tmp/infinite-engine-registry-dist` succeeded using cached build dependencies. Verified the SQL migration is packaged and ran the same offline demo from the extracted wheel successfully.
 - Initial formatting/type-check issues were corrected before the passing full check. No new dependency was required.
 - No source discovery, external URL/license verification, CSV parsing, review promotion or pilot dataset was performed. These are R2/R3 tests and deliverables, not skipped claims of R1 functionality. Local tests are synthetic and do not prove any domain knowledge.
+
+## Registry R2 observed verification — 2026-10-29
+
+- `make check`: passed; 50 backend tests total (17 R1, 31 R2, 2 health), 1 frontend test, all format/lint/type checks, 18-document link check and Vite build.
+- R2 checks cover approve/reject/revise/defer, edit-then-approve rejection, actor matching, DB-bound original/hash/version/provenance protection, missing/duplicate/malformed rows, blank/null/multilingual/multiline handling and formula escaping.
+- Transaction checks cover dry-run rollback, injected mid-promotion failure, revised-version rollback, stale exports, terminal decisions, unchanged previous curated revisions, bundle forward references and conflicting/repeated batch IDs.
+- Approval checks cover exact source-version dependency closure and a cycle that exists only in the mixed curated graph, despite a valid latest-candidate graph.
+- A real CLI subprocess round-trip imports the synthetic fixture, exports and revises CSV, dry-runs/applies, re-exports/approves, repeats the import and reads approved version 2. All data and reviewer identities in this test are explicitly synthetic.
+- Forward-migration test opens a v1-shaped database, verifies original revision preservation, and reopens with both migration checksums. 001_registry.sql is unchanged.
+- Offline wheel build passed; both SQL migrations are included, and the original offline demo initializes the v2 database successfully from the extracted wheel.
+- Initial line-length/type-check issues were corrected. No dependencies added. No real data approved, external sources checked or R3 work performed. Hosted CI status is reported separately after branch publication.

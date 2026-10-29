@@ -89,7 +89,7 @@ def test_identity_multilingual_history_and_restart(tmp_path: Path) -> None:
         assert db.get(old.entity_id) == new
         assert db.label_matches("domain", "ZH-hans", "天文学") == (old.entity_id,)
     with sqlite3.connect(path) as connection:
-        assert connection.execute("SELECT count(*) FROM schema_migration").fetchone()[0] == 1
+        assert connection.execute("SELECT count(*) FROM schema_migration").fetchone()[0] == 2
         assert connection.execute("SELECT count(*) FROM review_record").fetchone()[0] == 0
 
 

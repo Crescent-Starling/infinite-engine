@@ -1,4 +1,4 @@
-# Domain Intelligence Registry — R1 candidate storage implemented
+# Domain Intelligence Registry — R1 storage and R2 review implemented
 
 The registry is a durable curated data asset, separate from Domain Seeds and extended knowledge. Catalog coverage does not mean source verification, seed readiness, learning readiness or user mastery.
 
@@ -35,3 +35,48 @@ The earlier pipeline describes the target system. R1 now implements eight reques
 Run `uv run --frozen python -m infinite_engine.catalog` for a disposable offline demo. It prints stable identity, successful replay/history/restart checks and `pending_review`, then removes its temporary database. Run `uv run --frozen pytest tests/catalog -q` for integrity tests. Use `Registry(path)` as a context manager for application storage in an existing user-selected directory; no implicit file/network access is provided by candidate text.
 
 R1 does not implement CSV, batch import, classification-system adapters/mappings, field-level evidence, readiness computation, source discovery or the four-domain pilot. It does not complete M1 or validate any real domain fact. Next bounded step: R2 candidate bundles, human review and atomic approved import, including migrations that preserve R1 history. Broad collection remains gated by pilot acceptance.
+
+## R2 delivered — local review and approved import
+
+R2 implements candidate bundles, per-kind editable CSV packets, dry-run/apply, all four review decisions, exact-revision approval, idempotent receipts and an approved projection. There is no automatic approval: the included demo is synthetic, and only the operator's explicit decision/apply promotes its records.
+
+### Reproducible manual demo
+
+Run from the repository root. Choose a fresh directory name if you have already run this example; export refuses to overwrite an edited packet. `.local/` is ignored by Git.
+
+```sh
+mkdir -p .local/registry-demo
+uv run --frozen python -m infinite_engine.catalog.review_cli --db .local/registry-demo/registry.sqlite import-bundle tests/fixtures/domain_registry/review-bundle.json
+uv run --frozen python -m infinite_engine.catalog.review_cli --db .local/registry-demo/registry.sqlite import-bundle tests/fixtures/domain_registry/review-bundle.json --apply
+uv run --frozen python -m infinite_engine.catalog.review_cli --db .local/registry-demo/registry.sqlite export .local/registry-demo/review-1
+```
+
+Open `review-1/domain.csv` in a UTF-8 capable editor/spreadsheet. To correct the example, change `proposed.definition` to a JSON string such as `"Revised synthetic example"`, set decision to `revise`, reviewer to your chosen operator name (example: `owner`), and reason to a nonblank explanation. Keep protected fields and the provenance/manifest files unchanged.
+
+```sh
+uv run --frozen python -m infinite_engine.catalog.review_cli --db .local/registry-demo/registry.sqlite review .local/registry-demo/review-1 --actor owner
+uv run --frozen python -m infinite_engine.catalog.review_cli --db .local/registry-demo/registry.sqlite review .local/registry-demo/review-1 --actor owner --apply
+uv run --frozen python -m infinite_engine.catalog.review_cli --db .local/registry-demo/registry.sqlite export .local/registry-demo/review-2
+```
+
+In `review-2/domain.csv`, keep proposed fields unchanged, set decision=`approve`, reviewer=`owner`, and a nonblank reason. Then:
+
+```sh
+uv run --frozen python -m infinite_engine.catalog.review_cli --db .local/registry-demo/registry.sqlite review .local/registry-demo/review-2 --actor owner
+uv run --frozen python -m infinite_engine.catalog.review_cli --db .local/registry-demo/registry.sqlite review .local/registry-demo/review-2 --actor owner --apply
+uv run --frozen python -m infinite_engine.catalog.review_cli --db .local/registry-demo/registry.sqlite review .local/registry-demo/review-2 --actor owner --apply
+uv run --frozen python -m infinite_engine.catalog.review_cli --db .local/registry-demo/registry.sqlite curated
+```
+
+The second apply returns replayed=true; curated returns the approved version 2 with its review record. Version 1 remains available through Registry.get(id, 1). `reject` records rejection without promotion. `defer` leaves the revision unpromoted and eligible for later review. Blank decision/reviewer/reason with unchanged fields leaves a row untouched. Use export's repeatable `--entity ID` option to review a subset; otherwise all latest candidate rows are exported, including previously reviewed ones whose decision cells can remain blank.
+
+### CSV contract and boundaries
+
+- One CSV per entity kind; each field has protected original.* and editable proposed.* columns. Nested labels are JSON cells, not separate sheets in R2. Each exported row must remain present exactly once. UTF-8 BOM and standard CSV quoting support multilingual/multiline values.
+- Field values use JSON encoding: strings retain JSON double quotes, lists/objects retain JSON structure, null explicitly clears optional fields, and a blank cell is invalid. Required fields cannot be cleared. Decision/reviewer/reason are plain text. Keep headers/order unchanged.
+- Formula-like plain-text cells are prefixed with an apostrophe; an original leading apostrophe is doubled. The importer checks this reversible encoding. Manually entered formula-like reviewer/reason text must use that prefix. Spreadsheet applications can change escaping/formatting on resave: inspect the exported values and run dry-run before applying. No formula is executed by the importer.
+- Protected identity/version/hash/original/provenance/manifest changes, missing/duplicate rows, unknown columns and malformed values fail with diagnostics. Parsing errors include CSV filename and line; no partial rows are silently accepted.
+- Editing then approving in one row is rejected. Use revise, re-export, then explicitly approve the resulting version. Revisions are current-version checked and never replace previous approved data until approved themselves.
+- Batch/packet operations are atomic and replay-safe. Approval checks the full effective curated graph, including already approved versions, not just current drafts.
+- Dry-run rolls back domain/review writes. Opening a database can initialize or forward-migrate its schema even for dry-run; use a backup for schema upgrades. Export intentionally records its immutable baseline. A filesystem write failure can leave an incomplete new export directory, but never overwrites an existing one; export again to a fresh directory.
+- The operator and registry file owner are trusted. Actor matching records attribution and explicit intent; it is not authentication or a signature. Review files are bound to their source registry. Source authority/licenses, evidence content, taxonomy mappings and seed readiness still need separate work.

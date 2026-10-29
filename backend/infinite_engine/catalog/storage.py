@@ -3,6 +3,8 @@
 import hashlib
 import json
 import sqlite3
+from collections.abc import Iterator
+from contextlib import contextmanager
 from datetime import UTC, datetime
 from importlib.resources import files
 from pathlib import Path
@@ -58,31 +60,56 @@ class Registry:
         self._db.close()
 
     def _migrate(self) -> None:
-        sql = files("infinite_engine.catalog").joinpath("migrations/001_registry.sql").read_text()
-        digest = hashlib.sha256(sql.encode()).hexdigest()
+        migrations = [
+            files("infinite_engine.catalog").joinpath("migrations", name).read_text()
+            for name in ("001_registry.sql", "002_review.sql")
+        ]
         version = self._db.execute("PRAGMA user_version").fetchone()[0]
-        if version == 1:
-            row = self._db.execute(
-                "SELECT checksum FROM schema_migration WHERE version=1"
-            ).fetchone()
-            if row is None or row[0] != digest:
-                raise RegistryError("Migration checksum mismatch")
-            return
-        if version != 0:
+        if version not in range(len(migrations) + 1):
             raise RegistryError(f"Unsupported database schema version: {version}")
-        if self._db.execute("SELECT name FROM sqlite_master WHERE type='table'").fetchone():
+        if (
+            version == 0
+            and self._db.execute("SELECT name FROM sqlite_master WHERE type='table'").fetchone()
+        ):
             raise RegistryError("Refusing to initialize a nonempty, unversioned database")
+        for number, sql in enumerate(migrations, 1):
+            digest = hashlib.sha256(sql.encode()).hexdigest()
+            if number <= version:
+                row = self._db.execute(
+                    "SELECT checksum FROM schema_migration WHERE version=?", (number,)
+                ).fetchone()
+                if row is None or row[0] != digest:
+                    raise RegistryError("Migration checksum mismatch")
+                continue
+            try:
+                self._db.executescript(
+                    "BEGIN IMMEDIATE;\n"
+                    + sql
+                    + f"\nINSERT INTO schema_migration VALUES ({number}, '{digest}');"
+                    + f"\nPRAGMA user_version = {number};\nCOMMIT;"
+                )
+            except sqlite3.Error:
+                if self._db.in_transaction:
+                    self._db.rollback()
+                raise
+
+    @contextmanager
+    def transaction(self, *, dry_run: bool = False) -> Iterator[None]:
+        """Nested savepoints keep batch writes atomic; cleanup also runs on interruption."""
+        outer = not self._db.in_transaction
+        if outer:
+            self._db.execute("BEGIN IMMEDIATE")
+        self._db.execute("SAVEPOINT registry_operation")
+        success = False
         try:
-            self._db.executescript(
-                "BEGIN IMMEDIATE;\n"
-                + sql
-                + f"\nINSERT INTO schema_migration VALUES (1, '{digest}');"
-                + "\nPRAGMA user_version = 1;\nCOMMIT;"
-            )
-        except sqlite3.Error:
-            if self._db.in_transaction:
-                self._db.rollback()
-            raise
+            yield
+            success = not dry_run
+        finally:
+            if not success:
+                self._db.execute("ROLLBACK TO registry_operation")
+            self._db.execute("RELEASE registry_operation")
+            if outer:
+                self._db.commit()
 
     def get(self, entity_id: str, version: int | None = None) -> Revision:
         if version is None:
@@ -180,14 +207,12 @@ class Registry:
         entity_id = stable_id(candidate.payload.kind, identity_key)
         snapshot = canonical_json(candidate)
         digest = hashlib.sha256(snapshot.encode()).hexdigest()
-        self._db.execute("BEGIN IMMEDIATE")
-        try:
+        with self.transaction():
             row = self._db.execute(
                 "SELECT version,payload_hash FROM latest_revision WHERE entity_id=?", (entity_id,)
             ).fetchone()
             current = row["version"] if row else 0
             if row and digest == row["payload_hash"] and expected_version in {current, current - 1}:
-                self._db.commit()
                 return self.get(entity_id, current)
             if current != expected_version:
                 raise VersionConflict(f"Expected version {expected_version}; current is {current}")
@@ -212,11 +237,7 @@ class Registry:
                 ),
             )
             self._insert_payload(entity_id, version, candidate)
-            self._db.commit()
-        except (sqlite3.Error, ValueError, TypeError):
-            self._db.rollback()
-            raise
-        return self.get(entity_id, version)
+            return self.get(entity_id, version)
 
     def _insert_payload(self, entity_id: str, version: int, candidate: Candidate) -> None:
         payload = candidate.payload

@@ -1,6 +1,6 @@
 # Domain Intelligence Registry — implementation proposal
 
-Status: R1 implemented under the owner’s request to begin Registry work; R2–R4 remain planned. No dataset is approved.
+Status: R1 and R2 implemented under explicit owner requests; R3 pilot and R4 final acceptance remain planned. No real dataset is approved.
 
 ## Historical planning baseline (before M0)
 
@@ -116,3 +116,7 @@ M0 now supplies the package/test/tooling layout. The historical baseline above r
 Owner instruction to begin Registry work authorizes the first bounded slice. ADR-007 records the adopted identity/storage decisions and narrowed scope. Implemented contracts/IDs, normalized SQLite initial migration, candidate revision repository, graph/reference/duplicate validation, SourceCheck observations and a disposable offline demo. No dataset approval or promotion API.
 
 The review workflow, field-level provenance/taxonomy mapping tables and broad bootstrap/pilot remain follow-on R2/R3 scope. Full shared M1 knowledge contracts remain planned; R1 implements only their Registry prerequisites. Check results are recorded in docs/VALIDATION.md after execution. Stop at the R1 gate rather than automatically advancing to R2.
+
+## R2 implementation record — 2026-10-29
+
+Added 002 migration, atomic candidate bundles, DB-bound per-kind review CSVs, protected provenance, exact-version ledger decisions, curated projections, dry-run diffs, explicit actor/apply and idempotent receipts. The original 001 migration remains unchanged. ADR-008 records JSON label cells as a bounded simplification of separate label sheets. Synthetic CLI round-trip tests cover revise then approve; they do not approve any real domain data. R3 remains the next bounded task.

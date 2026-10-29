@@ -179,7 +179,7 @@ class Revision(Contract):
 
 
 class ReviewRecord(Contract):
-    """Contract reserved for R2; R1 exposes no review or promotion write API."""
+    """Append-only operator decision bound to an exact candidate version and hash."""
 
     entity_id: EntityID
     version: Annotated[int, Field(strict=True, ge=1)]

@@ -63,6 +63,8 @@ Each entry below is a bounded milestone: implement only the currently authorized
 
 ### DR — Domain Registry and human review
 
+Status: R1 contracts and candidate storage implemented; verification recorded in VALIDATION. R2 review/import and R3 pilot remain planned. Shared ID/source/provenance prerequisites are included in R1; full M1 remains planned.
+
 - Objective/scope/deliverables: Normalized registry; candidate manifests, source rationale, CSV reviews/import; four-domain pilot.
 - Dependencies: M0; M1 shared IDs/provenance.
 - Acceptance: Only approved exact revisions imported idempotently; taxonomy mapping retained.

@@ -21,7 +21,7 @@ Knowledge management loop: acquire multimodal resources → clean/code → graph
 
 ## Current status
 
-M0 foundation implemented locally: FastAPI process health, validated local configuration, React navigation shell, locked dependencies and automated checks. Registry, sources, seeds, graph, RAG, tutoring and personal persistence remain planned. No verified datasets or learning outcomes are claimed. CI is configured; remote execution is reported separately.
+M0 foundation implemented locally: FastAPI process health, validated local configuration, React navigation shell, locked dependencies and automated checks. Registry R1 candidate storage is implemented; curated import, seeds, validated knowledge graph, RAG, tutoring and personal persistence remain planned. No verified datasets or learning outcomes are claimed. CI is configured; remote execution is reported separately.
 
 ## Terminology
 
@@ -60,3 +60,7 @@ See [Development](docs/DEVELOPMENT.md) for configuration, troubleshooting and Gi
 - [Learning Engine](docs/LEARNING_ENGINE.md): motivation, goals, activities and user-led co-construction.
 - [Data contracts](docs/DATA_CONTRACTS.md), [architecture decisions](docs/DECISIONS.md), [validation](docs/VALIDATION.md).
 - [Changelog](CHANGELOG.md) and [roadmap](PLANS.md) separate actual delivery from future scope.
+
+## Registry progress
+
+R1 adds local candidate contracts, immutable SQLite revisions and provenance, typed domain relationships and an offline storage demo. It does not supply curated data, CSV review/import or ready seeds. Run `uv run --frozen python -m infinite_engine.catalog`; see [implemented contracts](docs/DATA_CONTRACTS.md) and [Registry scope](docs/DOMAIN_REGISTRY.md).

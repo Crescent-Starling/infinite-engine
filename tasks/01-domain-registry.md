@@ -1,4 +1,4 @@
-# Domain Registry — planned, separately authorized work
+# Domain Registry — R1 implemented; review/import and pilot planned
 
 Objective: create the curated catalog/review infrastructure, without full knowledge bases.
 Dependencies: M0 tooling; M1 ID/provenance contracts before persisted implementation.
@@ -10,3 +10,7 @@ Acceptance: immutable suggestions and reviews, only explicitly approved exact re
 Tests: schema/FK/duplicate/cycle checks, multilingual labels, stale versions, all review actions, protected CSV fields, atomic rollback, no-key/offline replay and unknown source metadata.
 Risks: taxonomy licensing, uncertain source authority, semantic duplicates, review workload and unsupported definitions.
 Out of scope: broad autonomous collection, complete seeds, full knowledge databases, frontend review UI unless separately approved.
+
+## Current progress
+
+R1 contracts/storage implemented in the dedicated `feature/domain-registry-contracts` branch; ADR-007 defines the adopted scope. R2 review/import and R3 pilot remain planned. The minimum shared identity/source/provenance prerequisite is included in R1; full M1 is not marked complete. See the detailed bootstrap task and DATA_CONTRACTS for implemented versus deferred fields.

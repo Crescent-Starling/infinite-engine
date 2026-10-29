@@ -46,3 +46,12 @@ Use this format for consequential changes: `ADR-### | date | title | status | co
 - **Rationale:** Preserve original work and enable review of the foundation diff.
 - **Consequences:** Initial main publication is needed for a GitHub PR; no feature merge is authorized. GitHub settings and hosted CI outcomes must be reported separately.
 - **Migration:** No published history rewritten.
+
+## ADR-007 | 2026-10-29 | Registry R1 identity and candidate storage | Accepted for R1
+
+- **Context:** Owner requested Registry implementation after foundation. Shared M1 IDs/provenance are a dependency, but implementing the full knowledge subsystem would exceed R1.
+- **Decision:** Implement the shared minimum inside `catalog`: type-prefixed UUIDv5 from immutable NFC identity keys and permanent namespace `0691e948-1e99-5da2-a366-0a088a3c7869`; normalized SQLite candidate tables; immutable revision/provenance/observation history. Labels never determine identity. DomainSource, DomainTopic and DomainConcept link existing typed identities. Classification is a multi-parent DAG; symmetric cross-domain edges canonicalize endpoints, APPLIES_TO may cycle.
+- **Alternatives:** Random IDs with a separate replay mapping; label-derived IDs; a JSON-only store; implementing full M1 and the review workflow at once.
+- **Rationale:** Deterministic offline replay and queryable relationships with a small reversible scope. No duplicate Source store or canonical knowledge model is introduced.
+- **Consequences:** R1 accepts only pending candidates, never curated data; reviews are contracts/reserved storage only. Homonymous labels are returned for human resolution, not automatically merged. Topic/Concept entries remain catalog stubs. Source checks record attributed observations, not a network-verification guarantee. Full BCP-47 validation, taxonomy mappings, field-level evidence, import manifests, review promotion and readiness capabilities remain R2/R3 work. The bootstrap plan's supporting-table list describes the eventual scope, not all of R1.
+- **Migration:** `001_registry.sql` initializes an empty database atomically, checks its digest on reopen and refuses unknown versions/nonempty unversioned databases. Published migrations must never be edited; add later migrations. R1 is the first persisted schema; it does not complete M1's claims, anchors, knowledge revision or seed contracts.

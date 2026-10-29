@@ -75,3 +75,9 @@ Persistence target: local SQLite metadata/typed relationships with blob files ou
 Error handling: input/config validation is explicit; future APIs distinguish malformed input, missing objects, stale revision conflicts, insufficient evidence, provider unavailable and partial parse failure. Validate before transactional writes; preserve retry/idempotency keys and prior revisions. Logs must be structured and omit raw personal content/secrets; structured request logging is not implemented in M0.
 
 Deployment: one local backend and browser UI, loopback-bound by default. No cloud account, network model call or public deployment. The Vite proxy is for development only. Production authentication, TLS and hosting are separate future decisions. Health is liveness, not readiness of unfinished modules.
+
+## Registry R1 implementation
+
+`catalog/contracts.py` validates candidate-only payloads and attributed provenance; `ids.py` owns persistent registry identity; `storage.py` owns SQLite migration/transactions and graph/duplicate/reference checks. A disposable `python -m infinite_engine.catalog` demo exercises replay, revision history and restart. No frontend/API integration, model call or automatic source verification is added.
+
+Data flow: caller-supplied candidate → strict contract validation → typed references/duplicate/classification checks → atomic normalized pending revision + provenance → candidate queries. Every write is version checked. Labels and membership edges connect shared objects; they do not duplicate canonical knowledge for views. ReviewRecord is reserved for R2, which must add hash-bound approval and curated projections via a new migration. SourceCheck records observations independently of review and readiness. See ADR-007 and the implemented section in DATA_CONTRACTS.

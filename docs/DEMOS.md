@@ -45,3 +45,7 @@ Objects: `GameMechanic`, `GameVersion`, `RuleChange`, `AppliesToVersion`. Knowle
 ## Available foundation demo (M0 only)
 
 Run `make setup`, `make backend` and `make frontend` from the root (servers in separate terminals). Open http://127.0.0.1:5173; switch Chat, Knowledge, Sources and My Learning. Each must explicitly say not implemented. Fetch http://127.0.0.1:8000/api/health for process liveness. This is not Demo A–D completion and supplies no domain seed or knowledge data. Registry curation and source verification remain planned; see [DOMAIN_REGISTRY.md](DOMAIN_REGISTRY.md).
+
+## Registry R1 offline demo
+
+`uv run --frozen python -m infinite_engine.catalog` creates a temporary synthetic catalog candidate, replays it without duplication, edits it as version 2, reopens storage and checks version 1 is preserved. Expected outputs include replay_idempotent/history_preserved/restart_persisted=true, latest_version=2, status=pending_review, curated_data_created=false. This is a storage demonstration, not any of the four domain pilots or vetted seeds.

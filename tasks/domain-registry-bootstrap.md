@@ -1,6 +1,6 @@
 # Domain Intelligence Registry — implementation proposal
 
-Status: proposed; implementation requires owner approval. Planning does not approve any dataset.
+Status: R1 implemented under the owner’s request to begin Registry work; R2–R4 remain planned. No dataset is approved.
 
 ## Historical planning baseline (before M0)
 
@@ -110,3 +110,9 @@ Paths are proposed because no application layout exists yet. Select one package/
 ## Foundation follow-up
 
 M0 now supplies the package/test/tooling layout. The historical baseline above records the original planning inspection, not the current repository state. Registry schema decisions and R1–R4 implementation remain proposed. Use [01-domain-registry.md](01-domain-registry.md) as the task entry point and coordinate shared contracts with M1.
+
+## R1 implementation record — 2026-10-29
+
+Owner instruction to begin Registry work authorizes the first bounded slice. ADR-007 records the adopted identity/storage decisions and narrowed scope. Implemented contracts/IDs, normalized SQLite initial migration, candidate revision repository, graph/reference/duplicate validation, SourceCheck observations and a disposable offline demo. No dataset approval or promotion API.
+
+The review workflow, field-level provenance/taxonomy mapping tables and broad bootstrap/pilot remain follow-on R2/R3 scope. Full shared M1 knowledge contracts remain planned; R1 implements only their Registry prerequisites. Check results are recorded in docs/VALIDATION.md after execution. Stop at the R1 gate rather than automatically advancing to R2.

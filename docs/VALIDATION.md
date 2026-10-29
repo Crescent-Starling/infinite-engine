@@ -48,3 +48,12 @@ Environment: macOS arm64, Python 3.12.13, Node 24.15.0, npm 11.12.1, uv 0.11.7.
 Initial Ruff import ordering failure was corrected. Initial Starlette test-client deprecation was resolved by using its supported httpx2 dependency. ESLint 9's install-time unsupported-version warning was resolved by installing ESLint 10. Initial socket binding was sandbox-blocked; permitted loopback startup then revealed occupied port 8000, so HTTP verification used 18000 without stopping unrelated processes. A post-interruption curl failed because the temporary server had stopped; a fresh server verified successfully.
 
 No domain dataset, license, source-verification, migration, AI or course benchmark tests are claimed. Those features do not exist yet. GitHub Actions is configured to run the same setup/check targets on Ubuntu; hosted outcome must be checked on the PR, separately from these macOS results. Branch protections and other manual GitHub settings remain unconfigured by this task.
+
+## Registry R1 observed verification — 2026-10-29
+
+- `uv run --frozen pytest tests/catalog -q`: 17 passed. Covered deterministic IDs, multilingual labels, append-only revisions, replay, stale writers, typed/missing references, duplicate memberships/aliases, multi-parent DAG/cycles, cross-domain cycles, evidence version retention, source-check observations, invalid contracts, rollback injection, migrations and offline/no-key storage.
+- `make check`: passed with 19 backend tests total, 1 frontend test, Ruff, mypy (11 source files), Prettier, ESLint, TypeScript, 18-document link check and Vite build.
+- `uv run --frozen python -m infinite_engine.catalog`: passed; replay/history/restart true, latest version 2, pending_review, no curated data.
+- Wheel build initially failed to resolve build dependencies because sandbox DNS could not reach PyPI. `uv build --offline --wheel --out-dir /tmp/infinite-engine-registry-dist` succeeded using cached build dependencies. Verified the SQL migration is packaged and ran the same offline demo from the extracted wheel successfully.
+- Initial formatting/type-check issues were corrected before the passing full check. No new dependency was required.
+- No source discovery, external URL/license verification, CSV parsing, review promotion or pilot dataset was performed. These are R2/R3 tests and deliverables, not skipped claims of R1 functionality. Local tests are synthetic and do not prove any domain knowledge.

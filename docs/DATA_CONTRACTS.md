@@ -91,3 +91,30 @@ Stable IDs must be opaque, type-prefixed and independent of mutable display labe
 Provenance carries local document IDs + stable page/section/offset anchors, author/generator when known, input artifact hashes and explicit unsupported state. Source URLs/licenses/dates may be unknown. Source authenticity does not prove a claim. DomainSeed approval requires vetted content and evidence beyond a catalog entry.
 
 Candidates remain draft/pending; human approve creates a validated/curated revision, reject records rejection, revise creates a new pending revision, defer preserves pending review. Old approved revisions remain readable; replacing them is version checked. AI draft and personal states cannot implicitly become validated. Any subsequent persisted schema change requires migrations, compatibility tests and updated contracts. Registry approval is independent of source verification and seed readiness.
+
+## Implemented Registry R1 contract — schema version 1
+
+This section supersedes earlier proposed fields **only for the implemented catalog module**. `contracts.py` is authoritative for runtime validation. The API still exposes only health; Registry is a Python library and offline demo.
+
+| Contract | Implemented shape / boundary |
+|---|---|
+| Domain | slug, domain_type, definition, scope_note; multilingual preferred/alias labels; no readiness or parent column |
+| Source | source_kind, labels, optional creator, HTTP(S) URI, local_path, publication date, license, version tag, SHA-256; unknown stays null |
+| DomainRelation | typed Domain endpoints; SUBDOMAIN_OF, OVERLAPS_WITH, RELATED_TO, APPLIES_TO; rationale |
+| DomainSource | domain/source identity links, rationale, intended_use, authority_scope, limitations |
+| Topic / Concept | multilingual labels and candidate description; no validated claim/definition semantics |
+| DomainTopic / DomainConcept | domain + shared topic/concept identity and rationale |
+| ReviewRecord | exact entity/version/hash, decision, reviewer, reason, timezone-aware time; revise requires next version; **no R1 persistence/promotion API** |
+| SourceCheck | exact source version; accessibility/authority/license dimension; confirmed/failed/inconclusive observation, timezone-aware time, method/actor/locator/evidence_note |
+
+`Candidate` wraps one discriminated payload, schema_version=1 and mandatory Provenance. Origin is human/ai/taxonomy_import/test_fixture; actor and rationale are required, generator/input hash optional. Evidence references an existing Source ID, exact source version and nonblank stable anchor locator; without evidence an explicit unsupported_reason is required. Locator existence/support in source bytes is not verified by R1. Taxonomy import origin alone does not capture external release mappings: those require R3's mapping contracts.
+
+IDs derive from explicit immutable keys (e.g. `local:astronomy`), not titles, slugs or URLs. Keep the namespace and key forever; changing a key creates another identity, not a rename. Stored revisions have version, prior_version, schema_version, SHA-256 of canonical candidate JSON (including provenance), actual recording time and pending_review status. Caller-provided approval/readiness fields are rejected. Label order and symmetric edge direction are canonicalized; evidence order remains significant in the content hash.
+
+Normalized SQL tables: registry_entity, entity_revision, label, domain, source, topic, concept, domain_relation, domain_source, domain_topic, domain_concept, provenance, evidence_reference, review_record, source_check and schema_migration. Snapshot JSON is an audit copy; payload fields, relationships, labels and evidence are separately queryable. UPDATE/DELETE triggers protect history; FKs protect references. Use the repository for typed endpoint, duplicate and graph validation; direct SQL writes are unsupported and local file access is not an authorization boundary.
+
+`Registry.save(key, candidate, expected_version=0)` creates a candidate; subsequent edits require the current version. Replaying the identical latest candidate with its current or original base version returns the existing revision without adding history. A stale different payload fails. `BEGIN IMMEDIATE` serializes the read/validate/write transaction; rejected writes roll back completely. No batch import yet.
+
+Duplicate slugs, current typed edges and memberships under different IDs are rejected. Duplicate aliases within one language/entity are invalid; cross-entity homonyms are permitted and returned by `label_matches(kind, language, text)` for human review. Normalization uses NFC, casefold and collapsed whitespace; no fuzzy or URL-based resource deduplication yet. Language tags use a documented syntactic subset of BCP-47 (language plus alphanumeric subtags), not full IANA validation.
+
+`relations()` returns pending candidate graph edges, not curated knowledge. SUBDOMAIN_OF is child→parent, allows multiple parents and rejects cycles/self-links. OVERLAPS_WITH/RELATED_TO store sorted endpoints; APPLIES_TO is directed and may cycle. Concept prerequisites and learning paths are not accepted registry predicates. Source checks cannot change candidate status or grant a verified badge. There is no deletion, curated query, review promotion or seed-readiness operation in R1.

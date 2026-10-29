@@ -59,3 +59,19 @@ These names are **proposed**, not already implemented contracts. Maintain an Ope
 ## Architectural decision records
 
 Maintain `docs/DECISIONS.md` for choices affecting schema, APIs, model/provider, graph DB, image extraction, and versioning. Record alternatives and migrations.
+
+## M0 implementation and future interfaces
+
+Implemented package: `backend/infinite_engine` contains Pydantic Settings and a FastAPI application factory with `GET /api/health`. `frontend/` is React/TypeScript/Vite with unavailable navigation sections. Tests use in-process HTTP and DOM fixtures. No runtime database or external provider is initialized. Dependency locks are authoritative; see [DEVELOPMENT.md](DEVELOPMENT.md).
+
+Planned typed interfaces (design only): SourceRepository retrieves Source/Evidence by stable ID; KnowledgeRepository queries typed relations and commits reviewed revisions with expected-version checks; Retriever accepts query/domain/filter context and returns anchored matches plus support gaps; ModelProvider accepts explicit context and returns labeled proposals; ToolGateway validates tool name/arguments against host allowlists. Agent orchestration consumes these interfaces, never direct arbitrary SQL/filesystem/network access. Provider absence produces an explicit unavailable/insufficient-evidence result, never a fabricated answer.
+
+The View Engine projects domain multi-parent graphs, concept dependencies, evidence and learning paths without duplicating canonical objects. Personal Cognition stores user-authored records/events keyed to stable knowledge IDs and viewed revisions; it cannot overwrite Representation. Conversation and structure-first clients share services and navigation context.
+
+Future flow: source registration → anchored parsing → candidate generation → deterministic validation → human review → transactional versioned persistence → retrieval/view projections. Personal interpretation goes to personal storage, not that promotion path. Catalog review and source checks do not certify knowledge claims or seed readiness.
+
+Persistence target: local SQLite metadata/typed relationships with blob files outside the database, migrations and repository interfaces. No Neo4j/vector database/framework dependency until a measured requirement justifies one. Future retrieval can begin with SQLite/keyword search; graph/vector adapters must preserve IDs/provenance.
+
+Error handling: input/config validation is explicit; future APIs distinguish malformed input, missing objects, stale revision conflicts, insufficient evidence, provider unavailable and partial parse failure. Validate before transactional writes; preserve retry/idempotency keys and prior revisions. Logs must be structured and omit raw personal content/secrets; structured request logging is not implemented in M0.
+
+Deployment: one local backend and browser UI, loopback-bound by default. No cloud account, network model call or public deployment. The Vite proxy is for development only. Production authentication, TLS and hosting are separate future decisions. Health is liveness, not readiness of unfinished modules.

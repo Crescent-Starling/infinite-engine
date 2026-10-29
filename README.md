@@ -1,4 +1,4 @@
-# Infinite Engine / 无限引擎 — Codex Development Pack
+# Infinite Engine / 无限引擎
 
 > From Zero to Infinite Possibilities.  从零开始，探索无限。
 
@@ -21,7 +21,7 @@ Knowledge management loop: acquire multimodal resources → clean/code → graph
 
 ## Current status
 
-Specification only. No working app, domain datasets, verified sources or completed benchmark results are claimed in this package. All milestones are **planned**, not implemented.
+M0 foundation implemented locally: FastAPI process health, validated local configuration, React navigation shell, locked dependencies and automated checks. Registry, sources, seeds, graph, RAG, tutoring and personal persistence remain planned. No verified datasets or learning outcomes are claimed. CI is configured; remote execution is reported separately.
 
 ## Terminology
 
@@ -36,3 +36,27 @@ Specification only. No working app, domain datasets, verified sources or complet
 ## Initial demo plan
 
 Astronomy: full end-to-end workflow. Latin: morphological/grammar schema extension. Fitness and nutrition: quantities, units, conditions, evidence. Stellaris: versioned rules. See [`docs/DEMOS.md`](docs/DEMOS.md).
+
+## Run locally
+
+Prerequisites: Python 3.12, Node 24, uv 0.11.7, npm and Make.
+
+```sh
+make setup
+make check
+# Separate terminals:
+make backend
+make frontend
+```
+
+Open http://127.0.0.1:5173 and switch navigation sections (all explicitly unavailable).
+`curl http://127.0.0.1:8000/api/health` checks backend liveness.
+No paid API key is required. First setup requires package-registry access.
+See [Development](docs/DEVELOPMENT.md) for configuration, troubleshooting and GitHub settings.
+
+## Engineering and product references
+
+- [Domain Registry](docs/DOMAIN_REGISTRY.md): candidate collection, provenance and explicit human review.
+- [Learning Engine](docs/LEARNING_ENGINE.md): motivation, goals, activities and user-led co-construction.
+- [Data contracts](docs/DATA_CONTRACTS.md), [architecture decisions](docs/DECISIONS.md), [validation](docs/VALIDATION.md).
+- [Changelog](CHANGELOG.md) and [roadmap](PLANS.md) separate actual delivery from future scope.

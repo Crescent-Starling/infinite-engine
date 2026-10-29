@@ -22,3 +22,7 @@ Actual KG, embeddings, external LLM calls, domain seeds, remote sources, users/a
 
 ## Implementation instruction
 Plan affected files first, then implement. Keep module names consistent with `docs/ARCHITECTURE.md`. Do not build M1+ in this task.
+
+## Implemented foundation scope (2026-10-29)
+
+FastAPI factory/health, validated local configuration, React navigation shell, locked Python/npm dependencies, Make targets, backend/UI tests, lint/type/format/build checks, CI and repository governance. No advanced AI behavior, database or seed is implemented. See [DEVELOPMENT.md](../docs/DEVELOPMENT.md) for commands and [VALIDATION.md](../docs/VALIDATION.md) for observed results. Further milestones require separate authorization.

@@ -41,3 +41,7 @@ Objects: `GameMechanic`, `GameVersion`, `RuleChange`, `AppliesToVersion`. Knowle
 | feedback/version | full | schema test | qualifiers | primary extension test |
 
 **Readiness condition:** a demo is only marked ready if its seed or fixture exists, is licensed appropriately, and has passing verifications.
+
+## Available foundation demo (M0 only)
+
+Run `make setup`, `make backend` and `make frontend` from the root (servers in separate terminals). Open http://127.0.0.1:5173; switch Chat, Knowledge, Sources and My Learning. Each must explicitly say not implemented. Fetch http://127.0.0.1:8000/api/health for process liveness. This is not Demo A–D completion and supplies no domain seed or knowledge data. Registry curation and source verification remain planned; see [DOMAIN_REGISTRY.md](DOMAIN_REGISTRY.md).

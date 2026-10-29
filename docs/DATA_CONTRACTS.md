@@ -68,3 +68,26 @@ A Domain Tree should draw from `BELONGS_TO_TOPIC`/topic-parent membership; a Dep
 ```
 
 This example is an **illustrative fixture**, not a verified astronomy dependency.
+
+## Registry and co-construction contract clarification (proposed, not persisted in M0)
+
+The only implemented API contract is HealthResponse `{status: "ok", service: "infinite-engine"}`. All knowledge contracts in this document remain proposed. No schema migration is needed for M0 because it creates no knowledge database.
+
+| Entity | Required design fields | Semantics |
+|---|---|---|
+| DomainRelation | id, from_domain_id, predicate, to_domain_id, rationale, revision_id | Multiple parents via edges, not a parent column; classification distinct from dependencies |
+| DomainSource | id, domain_id, source_id, role, rationale, limitations, revision_id | Recommendation within scope, not universal claim support |
+| Evidence | id, source_anchor_id, source_revision_id, supported_entity_revision_id, support_kind, limitations | Anchor locator and actual claim support are separate |
+| KnowledgeRelation | id, typed endpoints, predicate, qualifiers, evidence_ids, review_state, revision_id | Canonical name for the earlier Relation proposal, not a second relation store |
+| KnowledgeRevision | id, entity_id, prior_revision_id, version, payload_hash, actor, reason, timestamp, provenance_ids | Canonical specialization of Revision; immutable history and optimistic concurrency |
+| PersonalDefinition | id, concept_id, user_text, viewed_revision_id, created_at, prior_revision_id | Canonical name for personal explanatory definitions; PersonalExplanation stays an alias, not duplicate data |
+| LearningView | id, owner_scope, view_type, root_ids, filters, layout_preferences, version | Saved projection/preferences; never duplicate canonical concept objects |
+| DomainTopic / DomainConcept | id, domain_id, topic_id/concept_id, rationale, revision_id | Shared topic/concept membership, not validated definitions |
+| ReviewRecord | id, entity_id, revision_id, payload_hash, decision, reviewer, reason, recorded_at | Append-only explicit review of exact content |
+| SourceCheck | id, source_id, source_revision_id, kind, outcome, method, checked_at, actor, evidence_ref | Observed access/authority/license checks separately; unknown is not success |
+
+Stable IDs must be opaque, type-prefixed and independent of mutable display labels, URLs and view location. The registry proposal uses UUIDv5 from immutable identity keys; final adoption and namespace require a schema ADR in M1/R1. Keep multilingual labels and aliases in child records with language tags. Never merge solely on a matching name; flag scoped aliases for review. Preserve external taxonomy release/code and mapping provenance. Legacy `category_ids` becomes a projection of DomainRelation, not authoritative storage.
+
+Provenance carries local document IDs + stable page/section/offset anchors, author/generator when known, input artifact hashes and explicit unsupported state. Source URLs/licenses/dates may be unknown. Source authenticity does not prove a claim. DomainSeed approval requires vetted content and evidence beyond a catalog entry.
+
+Candidates remain draft/pending; human approve creates a validated/curated revision, reject records rejection, revise creates a new pending revision, defer preserves pending review. Old approved revisions remain readable; replacing them is version checked. AI draft and personal states cannot implicitly become validated. Any subsequent persisted schema change requires migrations, compatibility tests and updated contracts. Registry approval is independent of source verification and seed readiness.

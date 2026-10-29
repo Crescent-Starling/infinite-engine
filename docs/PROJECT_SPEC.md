@@ -126,3 +126,11 @@ Report results only after running a defined test. Distinguish user-perceived lea
 ## 9. Out of scope for first end-to-end demo
 
 - Training/fine-tuning LLMs; a fully autonomous universal expert system; production social graph; online marketplace; open arbitrary script plugins; unsupervised graph rewriting; complete four-domain datasets; guaranteed automatic logical proof; expert skill scores.
+
+## 10. Current foundation and long-term co-construction
+
+M0 implements only process health, local configuration and an unavailable-feature UI shell with engineering checks. There is no registry importer, persisted graph, retrieval or model integration yet. The course requirements and P1/P2 vision above remain intact.
+
+The long-term Domain Intelligence Registry is a source-grounded, multilingual data asset distinct from Source Registry, vetted Domain Seeds and on-demand Extended Knowledge. Broad coverage is compatible with few ready seeds. Discovery and AI proposals require provenance and human review before curated import; see [DOMAIN_REGISTRY.md](DOMAIN_REGISTRY.md).
+
+Human–AI co-construction distinguishes saved view customization, personal interpretation, candidate professional revision and verified professional knowledge. Users retain active reasoning and can inspect, revise and extend proposals; no silent promotion is permitted. Learning motivation, goals and activities are separate dimensions described in [LEARNING_ENGINE.md](LEARNING_ENGINE.md). Long-term insights and cognitive companionship remain optional, event-grounded and non-diagnostic.

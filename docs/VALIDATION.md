@@ -25,3 +25,26 @@
 - Compare human time and model runtime separately. Do not infer long-term mastery gains from short task studies.
 - Record failures and limitations: conflicting sources, outdated versions, relation cycles, OCR/figure parsing failures, ambiguous terms.
 - Distinguish source provenance from support of a claim; source authenticity does not prove inference validity.
+
+## M0 observed verification — 2026-10-29
+
+Environment: macOS arm64, Python 3.12.13, Node 24.15.0, npm 11.12.1, uv 0.11.7.
+
+| Check | Actual result |
+|---|---|
+| `make setup` (uv frozen sync + npm ci) | Passed; npm clean install from lockfile, 0 reported npm vulnerabilities |
+| `make check` | Passed after clean setup; rerun after interruption also passed |
+| Ruff format/check, mypy | Passed; 5 Python source files type checked |
+| pytest | 2 passed: health/no storage/API boundaries and environment config validation |
+| Prettier, ESLint, tsc | Passed |
+| Vitest | 1 passed: four navigation sections remain explicitly unavailable |
+| Vite production build | Passed |
+| `python scripts/check_docs.py` via uv | 18 documents checked, 0 errors |
+| `git diff --check` | Passed |
+| Ignore probes | `.env`, `.env.production`, `.local/private.json`, SQLite/log files, node_modules and virtualenv ignored |
+| Real HTTP health | Passed on temporary port 18000; response exactly matches documented JSON; test server stopped |
+| Browser smoke | UI loaded at 5173; Chat → Knowledge changed heading/selection and retained unavailable status; layout inspected |
+
+Initial Ruff import ordering failure was corrected. Initial Starlette test-client deprecation was resolved by using its supported httpx2 dependency. ESLint 9's install-time unsupported-version warning was resolved by installing ESLint 10. Initial socket binding was sandbox-blocked; permitted loopback startup then revealed occupied port 8000, so HTTP verification used 18000 without stopping unrelated processes. A post-interruption curl failed because the temporary server had stopped; a fresh server verified successfully.
+
+No domain dataset, license, source-verification, migration, AI or course benchmark tests are claimed. Those features do not exist yet. GitHub Actions is configured to run the same setup/check targets on Ubuntu; hosted outcome must be checked on the PR, separately from these macOS results. Branch protections and other manual GitHub settings remain unconfigured by this task.

@@ -1,0 +1,1 @@
+"""Infinite Engine application foundation."""

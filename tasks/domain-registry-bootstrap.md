@@ -2,7 +2,7 @@
 
 Status: proposed; implementation requires owner approval. Planning does not approve any dataset.
 
-## Repository baseline
+## Historical planning baseline (before M0)
 
 Read AGENTS.md, PROJECT_SPEC, DATA_CONTRACTS, DEMOS, ARCHITECTURE, PLANS and DECISIONS.
 The repository currently contains specifications only: no backend, database, dependency manifest or tests.
@@ -106,3 +106,7 @@ Paths are proposed because no application layout exists yet. Select one package/
 - No executable tests exist; tests and implementation commands have not been run.
 - No taxonomy/source research or URL/license verification has occurred during planning.
 - Owner review is requested by the task before implementation. Approve or amend schema decisions 1–8 and authorize R1 first; R2–R4 remain planned follow-on slices.
+
+## Foundation follow-up
+
+M0 now supplies the package/test/tooling layout. The historical baseline above records the original planning inspection, not the current repository state. Registry schema decisions and R1–R4 implementation remain proposed. Use [01-domain-registry.md](01-domain-registry.md) as the task entry point and coordinate shared contracts with M1.

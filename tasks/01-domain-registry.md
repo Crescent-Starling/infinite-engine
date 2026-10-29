@@ -1,0 +1,12 @@
+# Domain Registry — planned, separately authorized work
+
+Objective: create the curated catalog/review infrastructure, without full knowledge bases.
+Dependencies: M0 tooling; M1 ID/provenance contracts before persisted implementation.
+Scope/deliverables: approved normalized schema, migration, source recommendations with rationale, reproducible input manifests, editable review CSVs, validation/import, four-domain candidate pilot.
+
+Use [the retained detailed bootstrap proposal](domain-registry-bootstrap.md) as the implementation plan; do not duplicate it or assume its schema decisions are approved by M0. R1–R4 are bounded review slices, mapped to the DR track in PLANS.
+
+Acceptance: immutable suggestions and reviews, only explicitly approved exact revisions promoted, source/mapping provenance survives idempotent imports, multi-parent classification remains distinct from dependencies, pilot readiness remains honest.
+Tests: schema/FK/duplicate/cycle checks, multilingual labels, stale versions, all review actions, protected CSV fields, atomic rollback, no-key/offline replay and unknown source metadata.
+Risks: taxonomy licensing, uncertain source authority, semantic duplicates, review workload and unsupported definitions.
+Out of scope: broad autonomous collection, complete seeds, full knowledge databases, frontend review UI unless separately approved.

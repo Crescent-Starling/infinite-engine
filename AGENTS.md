@@ -63,3 +63,13 @@ These instructions apply to the entire repository. Read `docs/PROJECT_SPEC.md`, 
 - Commands executed with pass/fail/skipped status
 - Manual verification instructions
 - Known limitations, risks, and next recommended bounded task
+
+## Git, tooling and documentation
+
+- Stable branch: `main`; work on `feature/*`, `fix/*`, `docs/*`. Use small Conventional Commits and a PR. No force-push, history reset or automatic merge. Push only within explicit task authorization.
+- Run `make setup`, `make check`; use `make format` for formatting. Python 3.12 with Ruff/mypy/pytest; React/TypeScript with ESLint/tsc/Vitest. Commit lockfiles with dependency changes.
+- Update contracts, ADRs, task acceptance and PLANS alongside behavior changes. Detailed setup and manual GitHub settings are in `docs/DEVELOPMENT.md`.
+- Keep `.env`, database files, logs and personal records out of Git; use ignored `.local/` for local state. Never put secrets in browser environment variables. Bind development services to loopback.
+- Source authority, accessibility, claim support and reuse permission are separate checks. Preserve unknown values and original AI suggestions. Only explicit human approval can promote the exact reviewed revision.
+- View customization, personal interpretation, candidate professional revision and verified professional knowledge are distinct. Goals (Explore/Understand/Apply/Advance) and activities are not learning-style categories.
+- Done means scoped acceptance met, relevant checks actually run, reproducible manual demo, docs accurate, migrations/provenance safe, risks and skipped checks disclosed. A plausible model answer or an attractive graph is not completion.

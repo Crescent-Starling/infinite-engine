@@ -1,0 +1,1060 @@
+{
+  "$defs": {
+    "Access": {
+      "additionalProperties": false,
+      "properties": {
+        "availability": {
+          "default": "unknown",
+          "enum": [
+            "unknown",
+            "public",
+            "local",
+            "login",
+            "subscription",
+            "unavailable"
+          ],
+          "title": "Availability",
+          "type": "string"
+        },
+        "reuse": {
+          "default": "unknown",
+          "enum": [
+            "unknown",
+            "permitted",
+            "restricted"
+          ],
+          "title": "Reuse",
+          "type": "string"
+        },
+        "conditions": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Conditions"
+        },
+        "permission_evidence": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Permission Evidence"
+        }
+      },
+      "title": "Access",
+      "type": "object"
+    },
+    "ArtifactEntry": {
+      "additionalProperties": false,
+      "properties": {
+        "identity_key": {
+          "minLength": 1,
+          "title": "Identity Key",
+          "type": "string"
+        },
+        "version": {
+          "default": 1,
+          "minimum": 1,
+          "title": "Version",
+          "type": "integer"
+        },
+        "payload": {
+          "discriminator": {
+            "mapping": {
+              "source_anchor": "#/$defs/SourceAnchor",
+              "source_document": "#/$defs/SourceDocument",
+              "source_provider": "#/$defs/SourceProvider",
+              "source_resource": "#/$defs/SourceResource"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/SourceProvider"
+            },
+            {
+              "$ref": "#/$defs/SourceResource"
+            },
+            {
+              "$ref": "#/$defs/SourceDocument"
+            },
+            {
+              "$ref": "#/$defs/SourceAnchor"
+            }
+          ],
+          "title": "Payload"
+        },
+        "provenance": {
+          "$ref": "#/$defs/Provenance"
+        }
+      },
+      "required": [
+        "identity_key",
+        "payload",
+        "provenance"
+      ],
+      "title": "ArtifactEntry",
+      "type": "object"
+    },
+    "EvidenceReference": {
+      "additionalProperties": false,
+      "properties": {
+        "source_id": {
+          "pattern": "^[a-z_]+_[0-9a-f-]{36}$",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "source_version": {
+          "minimum": 1,
+          "title": "Source Version",
+          "type": "integer"
+        },
+        "anchor": {
+          "minLength": 1,
+          "title": "Anchor",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source_id",
+        "source_version",
+        "anchor"
+      ],
+      "title": "EvidenceReference",
+      "type": "object"
+    },
+    "ImageLocator": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "image",
+          "default": "image",
+          "title": "Kind",
+          "type": "string"
+        },
+        "x": {
+          "minimum": 0,
+          "title": "X",
+          "type": "integer"
+        },
+        "y": {
+          "minimum": 0,
+          "title": "Y",
+          "type": "integer"
+        },
+        "width": {
+          "minimum": 1,
+          "title": "Width",
+          "type": "integer"
+        },
+        "height": {
+          "minimum": 1,
+          "title": "Height",
+          "type": "integer"
+        },
+        "description": {
+          "minLength": 1,
+          "title": "Description",
+          "type": "string"
+        },
+        "description_origin": {
+          "enum": [
+            "human",
+            "publisher",
+            "ai",
+            "ocr"
+          ],
+          "title": "Description Origin",
+          "type": "string"
+        }
+      },
+      "required": [
+        "x",
+        "y",
+        "width",
+        "height",
+        "description",
+        "description_origin"
+      ],
+      "title": "ImageLocator",
+      "type": "object"
+    },
+    "Label": {
+      "additionalProperties": false,
+      "properties": {
+        "language": {
+          "pattern": "^(?:[A-Za-z]{2,8})(?:-[A-Za-z0-9]{1,8})*$",
+          "title": "Language",
+          "type": "string"
+        },
+        "text": {
+          "minLength": 1,
+          "title": "Text",
+          "type": "string"
+        },
+        "role": {
+          "default": "preferred",
+          "enum": [
+            "preferred",
+            "alias"
+          ],
+          "title": "Role",
+          "type": "string"
+        }
+      },
+      "required": [
+        "language",
+        "text"
+      ],
+      "title": "Label",
+      "type": "object"
+    },
+    "PageLocator": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "pdf",
+          "default": "pdf",
+          "title": "Kind",
+          "type": "string"
+        },
+        "page": {
+          "minimum": 1,
+          "title": "Page",
+          "type": "integer"
+        },
+        "section": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Section"
+        }
+      },
+      "required": [
+        "page"
+      ],
+      "title": "PageLocator",
+      "type": "object"
+    },
+    "Pin": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^[a-z_]+_[0-9a-f-]{36}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "version": {
+          "minimum": 1,
+          "title": "Version",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "id",
+        "version"
+      ],
+      "title": "Pin",
+      "type": "object"
+    },
+    "Provenance": {
+      "additionalProperties": false,
+      "properties": {
+        "origin": {
+          "enum": [
+            "human",
+            "ai",
+            "taxonomy_import",
+            "test_fixture"
+          ],
+          "title": "Origin",
+          "type": "string"
+        },
+        "actor": {
+          "minLength": 1,
+          "title": "Actor",
+          "type": "string"
+        },
+        "rationale": {
+          "minLength": 1,
+          "title": "Rationale",
+          "type": "string"
+        },
+        "generator": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Generator"
+        },
+        "input_hash": {
+          "anyOf": [
+            {
+              "pattern": "^[a-f0-9]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Input Hash"
+        },
+        "evidence": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/EvidenceReference"
+          },
+          "title": "Evidence",
+          "type": "array"
+        },
+        "unsupported_reason": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Unsupported Reason"
+        }
+      },
+      "required": [
+        "origin",
+        "actor",
+        "rationale"
+      ],
+      "title": "Provenance",
+      "type": "object"
+    },
+    "Source": {
+      "additionalProperties": false,
+      "properties": {
+        "labels": {
+          "items": {
+            "$ref": "#/$defs/Label"
+          },
+          "minItems": 1,
+          "title": "Labels",
+          "type": "array"
+        },
+        "language": {
+          "anyOf": [
+            {
+              "pattern": "^[A-Za-z]{2,8}(?:-[A-Za-z0-9]{1,8})*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Language"
+        },
+        "coverage_description": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Coverage Description"
+        },
+        "access_conditions": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Access Conditions"
+        },
+        "bibliographic_reference": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Bibliographic Reference"
+        },
+        "resource_identity": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Resource Identity"
+        },
+        "discovery_method": {
+          "anyOf": [
+            {
+              "enum": [
+                "system_recommendation",
+                "ai_discovery",
+                "user_added"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Discovery Method"
+        },
+        "updated_on": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Updated On"
+        },
+        "kind": {
+          "const": "source",
+          "default": "source",
+          "title": "Kind",
+          "type": "string"
+        },
+        "source_kind": {
+          "enum": [
+            "institution",
+            "academic_organization",
+            "open_textbook",
+            "database",
+            "reference",
+            "technical_documentation",
+            "taxonomy",
+            "local_document",
+            "book",
+            "paper",
+            "website",
+            "other"
+          ],
+          "title": "Source Kind",
+          "type": "string"
+        },
+        "creator": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Creator"
+        },
+        "uri": {
+          "anyOf": [
+            {
+              "format": "uri",
+              "maxLength": 2083,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Uri"
+        },
+        "local_path": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Local Path"
+        },
+        "published_at": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Published At"
+        },
+        "license": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "License"
+        },
+        "version_tag": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Version Tag"
+        },
+        "content_hash": {
+          "anyOf": [
+            {
+              "pattern": "^[a-f0-9]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Content Hash"
+        }
+      },
+      "required": [
+        "labels",
+        "source_kind"
+      ],
+      "title": "Source",
+      "type": "object"
+    },
+    "SourceAnchor": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "source_anchor",
+          "default": "source_anchor",
+          "title": "Kind",
+          "type": "string"
+        },
+        "document": {
+          "$ref": "#/$defs/Pin"
+        },
+        "content_hash": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Content Hash",
+          "type": "string"
+        },
+        "locator": {
+          "discriminator": {
+            "mapping": {
+              "image": "#/$defs/ImageLocator",
+              "pdf": "#/$defs/PageLocator",
+              "structured": "#/$defs/StructuredLocator",
+              "text": "#/$defs/TextLocator",
+              "web": "#/$defs/WebLocator"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/TextLocator"
+            },
+            {
+              "$ref": "#/$defs/PageLocator"
+            },
+            {
+              "$ref": "#/$defs/StructuredLocator"
+            },
+            {
+              "$ref": "#/$defs/WebLocator"
+            },
+            {
+              "$ref": "#/$defs/ImageLocator"
+            }
+          ],
+          "title": "Locator"
+        },
+        "locator_status": {
+          "default": "proposed",
+          "enum": [
+            "proposed",
+            "checked",
+            "unresolved"
+          ],
+          "title": "Locator Status",
+          "type": "string"
+        },
+        "check_evidence": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Check Evidence"
+        }
+      },
+      "required": [
+        "document",
+        "content_hash",
+        "locator"
+      ],
+      "title": "SourceAnchor",
+      "type": "object"
+    },
+    "SourceCandidate": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "default": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "payload": {
+          "$ref": "#/$defs/Source"
+        },
+        "provenance": {
+          "$ref": "#/$defs/Provenance"
+        }
+      },
+      "required": [
+        "payload",
+        "provenance"
+      ],
+      "title": "SourceCandidate",
+      "type": "object"
+    },
+    "SourceDocument": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "source_document",
+          "default": "source_document",
+          "title": "Kind",
+          "type": "string"
+        },
+        "resource": {
+          "$ref": "#/$defs/Pin"
+        },
+        "title": {
+          "minLength": 1,
+          "title": "Title",
+          "type": "string"
+        },
+        "media_type": {
+          "minLength": 1,
+          "title": "Media Type",
+          "type": "string"
+        },
+        "adapter": {
+          "enum": [
+            "web",
+            "pdf",
+            "text",
+            "csv",
+            "json",
+            "xml",
+            "api_metadata",
+            "image"
+          ],
+          "title": "Adapter",
+          "type": "string"
+        },
+        "locator": {
+          "minLength": 1,
+          "title": "Locator",
+          "type": "string"
+        },
+        "publisher_version": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Publisher Version"
+        },
+        "content_hash": {
+          "anyOf": [
+            {
+              "pattern": "^[a-f0-9]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Content Hash"
+        },
+        "acquisition_state": {
+          "default": "not_acquired",
+          "enum": [
+            "not_acquired",
+            "available",
+            "failed"
+          ],
+          "title": "Acquisition State",
+          "type": "string"
+        },
+        "access": {
+          "$ref": "#/$defs/Access",
+          "default": {
+            "availability": "unknown",
+            "reuse": "unknown",
+            "conditions": null,
+            "permission_evidence": null
+          }
+        }
+      },
+      "required": [
+        "resource",
+        "title",
+        "media_type",
+        "adapter",
+        "locator"
+      ],
+      "title": "SourceDocument",
+      "type": "object"
+    },
+    "SourceEntry": {
+      "additionalProperties": false,
+      "properties": {
+        "identity_key": {
+          "minLength": 1,
+          "title": "Identity Key",
+          "type": "string"
+        },
+        "expected_version": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Expected Version",
+          "type": "integer"
+        },
+        "candidate": {
+          "$ref": "#/$defs/SourceCandidate"
+        }
+      },
+      "required": [
+        "identity_key",
+        "candidate"
+      ],
+      "title": "SourceEntry",
+      "type": "object"
+    },
+    "SourceProvider": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "source_provider",
+          "default": "source_provider",
+          "title": "Kind",
+          "type": "string"
+        },
+        "name": {
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "homepage": {
+          "anyOf": [
+            {
+              "format": "uri",
+              "maxLength": 2083,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Homepage"
+        },
+        "provider_type": {
+          "enum": [
+            "publisher",
+            "institution",
+            "community",
+            "personal",
+            "unknown"
+          ],
+          "title": "Provider Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "provider_type"
+      ],
+      "title": "SourceProvider",
+      "type": "object"
+    },
+    "SourceResource": {
+      "additionalProperties": false,
+      "description": "Sidecar of an existing Source revision, not a replacement Source identity.",
+      "properties": {
+        "kind": {
+          "const": "source_resource",
+          "default": "source_resource",
+          "title": "Kind",
+          "type": "string"
+        },
+        "source": {
+          "$ref": "#/$defs/Pin"
+        },
+        "provider": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Pin"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "resource_type": {
+          "enum": [
+            "collection",
+            "standalone"
+          ],
+          "title": "Resource Type",
+          "type": "string"
+        },
+        "access": {
+          "$ref": "#/$defs/Access",
+          "default": {
+            "availability": "unknown",
+            "reuse": "unknown",
+            "conditions": null,
+            "permission_evidence": null
+          }
+        }
+      },
+      "required": [
+        "source",
+        "resource_type"
+      ],
+      "title": "SourceResource",
+      "type": "object"
+    },
+    "StructuredLocator": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "structured",
+          "default": "structured",
+          "title": "Kind",
+          "type": "string"
+        },
+        "syntax": {
+          "enum": [
+            "json_pointer",
+            "xpath",
+            "csv_row",
+            "api_record"
+          ],
+          "title": "Syntax",
+          "type": "string"
+        },
+        "selector": {
+          "minLength": 1,
+          "title": "Selector",
+          "type": "string"
+        },
+        "field": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Field"
+        }
+      },
+      "required": [
+        "syntax",
+        "selector"
+      ],
+      "title": "StructuredLocator",
+      "type": "object"
+    },
+    "TextLocator": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "text",
+          "default": "text",
+          "title": "Kind",
+          "type": "string"
+        },
+        "section": {
+          "minLength": 1,
+          "title": "Section",
+          "type": "string"
+        },
+        "start": {
+          "minimum": 0,
+          "title": "Start",
+          "type": "integer"
+        },
+        "end": {
+          "minimum": 1,
+          "title": "End",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "section",
+        "start",
+        "end"
+      ],
+      "title": "TextLocator",
+      "type": "object"
+    },
+    "WebLocator": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "web",
+          "default": "web",
+          "title": "Kind",
+          "type": "string"
+        },
+        "url": {
+          "format": "uri",
+          "maxLength": 2083,
+          "minLength": 1,
+          "title": "Url",
+          "type": "string"
+        },
+        "selector": {
+          "minLength": 1,
+          "title": "Selector",
+          "type": "string"
+        },
+        "quote": {
+          "minLength": 1,
+          "title": "Quote",
+          "type": "string"
+        }
+      },
+      "required": [
+        "url",
+        "selector",
+        "quote"
+      ],
+      "title": "WebLocator",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "format_version": {
+      "const": 1,
+      "default": 1,
+      "title": "Format Version",
+      "type": "integer"
+    },
+    "batch_id": {
+      "minLength": 1,
+      "title": "Batch Id",
+      "type": "string"
+    },
+    "sources": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/SourceEntry"
+      },
+      "title": "Sources",
+      "type": "array"
+    },
+    "artifacts": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/ArtifactEntry"
+      },
+      "title": "Artifacts",
+      "type": "array"
+    }
+  },
+  "required": [
+    "batch_id"
+  ],
+  "title": "SourceCandidates",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

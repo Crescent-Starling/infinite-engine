@@ -1,0 +1,23 @@
+format_version: 1
+profile_id: mock-stellaris
+revision: 1
+domain:
+  id: domain_8900c93e-c519-5c59-b4ef-76c1ec715102
+  version: 1
+purpose: Prepare reviewable Stellaris source candidates
+languages:
+- en
+queries:
+- Stellaris introductory references
+adapters:
+- json
+- image
+inclusion:
+- Explicit provenance and edition/version metadata
+exclusion:
+- Unattributed copies or unsupported authority claims
+provenance:
+  origin: test_fixture
+  actor: fixture-author
+  rationale: Synthetic architecture example only
+  unsupported_reason: Not researched, acquired or professionally verified

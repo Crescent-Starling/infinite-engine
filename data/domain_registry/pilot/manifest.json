@@ -1,0 +1,48 @@
+{
+  "adapter_version": "pilot-v1",
+  "batch_id": "four-domain-pilot-r3-v1",
+  "extensions": [
+    {
+      "domain_key": "astronomy",
+      "reason": "Current stubs cannot capture image regions or prerequisite relations; no end-to-end demo is implemented.",
+      "requirement": "Anchored multimodal evidence and concept dependencies",
+      "status": "not_implemented"
+    },
+    {
+      "domain_key": "latin",
+      "reason": "Distinct Case concepts can share an English label; current Concept has no morphology schema.",
+      "requirement": "Lexeme/form identity, morphology and scoped label disambiguation",
+      "status": "not_implemented"
+    },
+    {
+      "domain_key": "fitness-nutrition",
+      "reason": "Concept descriptions cannot enforce clinical context or dimensional validity; no advice is supplied.",
+      "requirement": "Quantities, units, sample basis, population and conditions",
+      "status": "not_implemented"
+    },
+    {
+      "domain_key": "stellaris",
+      "reason": "Source version_tag is not a per-rule applicability model; current stubs cannot enforce compatible rules.",
+      "requirement": "Patch/platform/DLC applicability and rules history",
+      "status": "not_implemented"
+    }
+  ],
+  "pilot_domain_keys": [
+    "astronomy",
+    "latin",
+    "fitness-nutrition",
+    "stellaris"
+  ],
+  "schema_version": 1,
+  "suggestions": {
+    "path": "suggestions.json",
+    "sha256": "cb409f14477ce90cd227c0cbbf8c1ffb43a3338a9d5d3433ac2b355594eadfa5"
+  },
+  "taxonomy": {
+    "path": "taxonomy.json",
+    "sha256": "222a44e596d5f02f0bf190d2c5b5502ffb722b13e879b709ccf1aa61c3c9f5c8"
+  },
+  "unmapped": {
+    "stellaris": "No defensible direct ISCED-F match selected for a specific game. Keep local identity; do not force a taxonomy mapping."
+  }
+}

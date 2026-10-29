@@ -1,0 +1,91 @@
+{
+  "format_version": 1,
+  "batch_id": "mock-astronomy-v1",
+  "sources": [
+    {
+      "identity_key": "mock:sources:astronomy",
+      "candidate": {
+        "payload": {
+          "kind": "source",
+          "labels": [
+            {
+              "language": "en",
+              "text": "MOCK Astronomy resource"
+            }
+          ],
+          "source_kind": "reference",
+          "uri": "https://example.invalid/astronomy",
+          "discovery_method": "user_added",
+          "coverage_description": "Synthetic metadata, not an authoritative recommendation"
+        },
+        "provenance": {
+          "origin": "test_fixture",
+          "actor": "fixture-author",
+          "rationale": "Synthetic architecture example only",
+          "unsupported_reason": "Not researched, acquired or professionally verified"
+        }
+      }
+    }
+  ],
+  "artifacts": [
+    {
+      "identity_key": "mock:sources:astronomy",
+      "version": 1,
+      "payload": {
+        "kind": "source_provider",
+        "name": "MOCK Astronomy provider",
+        "provider_type": "unknown"
+      },
+      "provenance": {
+        "origin": "test_fixture",
+        "actor": "fixture-author",
+        "rationale": "Synthetic architecture example only",
+        "unsupported_reason": "Not researched, acquired or professionally verified"
+      }
+    },
+    {
+      "identity_key": "mock:sources:astronomy",
+      "version": 1,
+      "payload": {
+        "kind": "source_resource",
+        "source": {
+          "id": "source_303b48c3-4d0c-5756-81a2-b66b16ee49b1",
+          "version": 1
+        },
+        "provider": {
+          "id": "source_provider_24a605dc-38c3-5576-8b30-52d58a54976b",
+          "version": 1
+        },
+        "resource_type": "collection"
+      },
+      "provenance": {
+        "origin": "test_fixture",
+        "actor": "fixture-author",
+        "rationale": "Synthetic architecture example only",
+        "unsupported_reason": "Not researched, acquired or professionally verified"
+      }
+    },
+    {
+      "identity_key": "mock:sources:astronomy",
+      "version": 1,
+      "payload": {
+        "kind": "source_document",
+        "resource": {
+          "id": "source_303b48c3-4d0c-5756-81a2-b66b16ee49b1",
+          "version": 1
+        },
+        "title": "MOCK Astronomy document",
+        "media_type": "text/html",
+        "adapter": "web",
+        "locator": "https://example.invalid/astronomy/document",
+        "publisher_version": null
+      },
+      "provenance": {
+        "origin": "test_fixture",
+        "actor": "fixture-author",
+        "rationale": "Synthetic architecture example only",
+        "unsupported_reason": "Not researched, acquired or professionally verified"
+      }
+    }
+  ]
+}

@@ -62,7 +62,13 @@ class Registry:
     def _migrate(self) -> None:
         migrations = [
             files("infinite_engine.catalog").joinpath("migrations", name).read_text()
-            for name in ("001_registry.sql", "002_review.sql")
+            for name in (
+                "001_registry.sql",
+                "002_review.sql",
+                "003_taxonomy.sql",
+                "004_domain_architecture.sql",
+                "005_source_discovery.sql",
+            )
         ]
         version = self._db.execute("PRAGMA user_version").fetchone()[0]
         if version not in range(len(migrations) + 1):
@@ -143,12 +149,14 @@ class Registry:
         payload = candidate.payload
         values = payload.model_dump()
         for name, kind in (
+            ("category_id", "category"),
             ("domain_id", "domain"),
             ("from_domain_id", "domain"),
             ("to_domain_id", "domain"),
             ("source_id", "source"),
             ("topic_id", "topic"),
             ("concept_id", "concept"),
+            ("taxonomy_entry_id", "taxonomy_entry"),
         ):
             if name in values:
                 self._reference(values[name], kind)
@@ -162,8 +170,55 @@ class Registry:
                 is None
             ):
                 raise RegistryError("Evidence references an absent source revision")
+        if payload.kind == "taxonomy_entry":
+            source = self.get(payload.source_id, payload.source_version).candidate.payload
+            if source.kind != "source" or source.source_kind != "taxonomy":
+                raise RegistryError("Taxonomy entry requires a taxonomy source")
+            if source.version_tag != payload.release_tag:
+                raise RegistryError("Taxonomy release must match its pinned source revision")
+            old = self._db.execute(
+                "SELECT source_id,source_version,release_tag,code FROM taxonomy_entry "
+                "WHERE entity_id=? LIMIT 1",
+                (entity_id,),
+            ).fetchone()
+            identity = (
+                payload.source_id,
+                payload.source_version,
+                payload.release_tag,
+                payload.code,
+            )
+            if old and tuple(old) != identity:
+                raise RegistryError(
+                    "Taxonomy identity cannot change release, code or source revision"
+                )
+        if payload.kind == "domain_mapping":
+            target = self.get(payload.taxonomy_entry_id, payload.taxonomy_entry_version)
+            if target.candidate.payload.kind != "taxonomy_entry":
+                raise RegistryError("Mapping requires an exact taxonomy entry revision")
+        if payload.kind == "domain":
+            old = self._db.execute(
+                "SELECT origin FROM domain WHERE entity_id=? AND origin IS NOT NULL LIMIT 1",
+                (entity_id,),
+            ).fetchone()
+            if old and old[0] != payload.origin:
+                raise RegistryError("Domain origin is immutable once explicitly assigned")
+        if payload.kind == "domain_relation" and payload.predicate == "REFERENCES_PRESET":
+            source = self.get(payload.from_domain_id).candidate.payload
+            target_domain = self.get(payload.to_domain_id).candidate.payload
+            if (
+                source.kind != "domain"
+                or target_domain.kind != "domain"
+                or source.origin != "custom"
+                or target_domain.origin != "preset"
+            ):
+                raise RegistryError("REFERENCES_PRESET requires custom to preset endpoints")
         keys = {
+            "taxonomy_entry": ("source_id", "release_tag", "code"),
+            "domain_mapping": ("domain_id", "taxonomy_entry_id"),
+            "category": ("slug",),
+            "domain_category": ("domain_id", "category_id"),
             "domain": ("slug",),
+            "source": ("resource_identity",) if values.get("resource_identity") else (),
             "domain_relation": ("from_domain_id", "predicate", "to_domain_id"),
             "domain_source": ("domain_id", "source_id"),
             "domain_topic": ("domain_id", "topic_id"),

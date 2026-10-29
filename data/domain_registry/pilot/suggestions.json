@@ -1,0 +1,1294 @@
+{
+  "entries": [
+    {
+      "candidate": {
+        "payload": {
+          "definition": "Study of celestial objects, physical processes and the universe.",
+          "domain_type": "academic",
+          "kind": "domain",
+          "labels": [
+            {
+              "language": "en",
+              "text": "Astronomy"
+            },
+            {
+              "language": "zh",
+              "text": "天文学"
+            }
+          ],
+          "scope_note": "Primary future end-to-end demo; no scientific claims or seed supplied.",
+          "slug": "astronomy"
+        },
+        "provenance": {
+          "actor": "Codex",
+          "evidence": [],
+          "generator": "saved R3 pilot suggestions",
+          "origin": "ai",
+          "rationale": "AI-authored pilot catalog suggestion; owner review required.",
+          "unsupported_reason": "Candidate metadata only; no verified claim, source certification or seed readiness."
+        },
+        "schema_version": 1
+      },
+      "expected_version": 0,
+      "identity_key": "astronomy"
+    },
+    {
+      "candidate": {
+        "payload": {
+          "definition": "Exploration of Latin language structure, reading and usage.",
+          "domain_type": "language",
+          "kind": "domain",
+          "labels": [
+            {
+              "language": "en",
+              "text": "Latin"
+            },
+            {
+              "language": "zh",
+              "text": "拉丁语"
+            }
+          ],
+          "scope_note": "Catalog scope includes grammar and reading; no language course or verified morphology.",
+          "slug": "latin"
+        },
+        "provenance": {
+          "actor": "Codex",
+          "evidence": [],
+          "generator": "saved R3 pilot suggestions",
+          "origin": "ai",
+          "rationale": "AI-authored pilot catalog suggestion; owner review required.",
+          "unsupported_reason": "Candidate metadata only; no verified claim, source certification or seed readiness."
+        },
+        "schema_version": 1
+      },
+      "expected_version": 0,
+      "identity_key": "latin"
+    },
+    {
+      "candidate": {
+        "payload": {
+          "definition": "Exploration of physical activity, nutrition and the interpretation of relevant evidence.",
+          "domain_type": "interdisciplinary",
+          "kind": "domain",
+          "labels": [
+            {
+              "language": "en",
+              "text": "Fitness and Nutrition"
+            },
+            {
+              "language": "zh",
+              "text": "健身与营养"
+            }
+          ],
+          "scope_note": "Educational metadata only, no individualized advice, dosage or outcome claims.",
+          "slug": "fitness-nutrition"
+        },
+        "provenance": {
+          "actor": "Codex",
+          "evidence": [],
+          "generator": "saved R3 pilot suggestions",
+          "origin": "ai",
+          "rationale": "AI-authored pilot catalog suggestion; owner review required.",
+          "unsupported_reason": "Candidate metadata only; no verified claim, source certification or seed readiness."
+        },
+        "schema_version": 1
+      },
+      "expected_version": 0,
+      "identity_key": "fitness-nutrition"
+    },
+    {
+      "candidate": {
+        "payload": {
+          "definition": "Exploration of the rules and systems of the Stellaris game.",
+          "domain_type": "game",
+          "kind": "domain",
+          "labels": [
+            {
+              "language": "en",
+              "text": "Stellaris"
+            },
+            {
+              "language": "zh",
+              "text": "群星"
+            }
+          ],
+          "scope_note": "Publisher context only; mechanics require explicit patch, platform and DLC scope.",
+          "slug": "stellaris"
+        },
+        "provenance": {
+          "actor": "Codex",
+          "evidence": [],
+          "generator": "saved R3 pilot suggestions",
+          "origin": "ai",
+          "rationale": "AI-authored pilot catalog suggestion; owner review required.",
+          "unsupported_reason": "Candidate metadata only; no verified claim, source certification or seed readiness."
+        },
+        "schema_version": 1
+      },
+      "expected_version": 0,
+      "identity_key": "stellaris"
+    },
+    {
+      "candidate": {
+        "payload": {
+          "definition": "Context category for studying natural phenomena.",
+          "domain_type": "academic",
+          "kind": "domain",
+          "labels": [
+            {
+              "language": "en",
+              "text": "Natural sciences"
+            },
+            {
+              "language": "zh",
+              "text": "自然科学"
+            }
+          ],
+          "scope_note": "Local pilot parent; not imported wholesale from a taxonomy.",
+          "slug": "natural-sciences"
+        },
+        "provenance": {
+          "actor": "Codex",
+          "evidence": [],
+          "generator": "saved R3 pilot suggestions",
+          "origin": "ai",
+          "rationale": "AI-authored pilot catalog suggestion; owner review required.",
+          "unsupported_reason": "Candidate metadata only; no verified claim, source certification or seed readiness."
+        },
+        "schema_version": 1
+      },
+      "expected_version": 0,
+      "identity_key": "natural-sciences"
+    },
+    {
+      "candidate": {
+        "payload": {
+          "definition": "Context category for language, texts and cultural study.",
+          "domain_type": "academic",
+          "kind": "domain",
+          "labels": [
+            {
+              "language": "en",
+              "text": "Humanities"
+            },
+            {
+              "language": "zh",
+              "text": "人文学科"
+            }
+          ],
+          "scope_note": "Local pilot parent, not a complete classification.",
+          "slug": "humanities"
+        },
+        "provenance": {
+          "actor": "Codex",
+          "evidence": [],
+          "generator": "saved R3 pilot suggestions",
+          "origin": "ai",
+          "rationale": "AI-authored pilot catalog suggestion; owner review required.",
+          "unsupported_reason": "Candidate metadata only; no verified claim, source certification or seed readiness."
+        },
+        "schema_version": 1
+      },
+      "expected_version": 0,
+      "identity_key": "humanities"
+    },
+    {
+      "candidate": {
+        "payload": {
+          "definition": "Context category for critical study of health-related evidence.",
+          "domain_type": "academic",
+          "kind": "domain",
+          "labels": [
+            {
+              "language": "en",
+              "text": "Health studies"
+            },
+            {
+              "language": "zh",
+              "text": "健康研究"
+            }
+          ],
+          "scope_note": "No clinical knowledge or advice supplied.",
+          "slug": "health-studies"
+        },
+        "provenance": {
+          "actor": "Codex",
+          "evidence": [],
+          "generator": "saved R3 pilot suggestions",
+          "origin": "ai",
+          "rationale": "AI-authored pilot catalog suggestion; owner review required.",
+          "unsupported_reason": "Candidate metadata only; no verified claim, source certification or seed readiness."
+        },
+        "schema_version": 1
+      },
+      "expected_version": 0,
+      "identity_key": "health-studies"
+    },
+    {
+      "candidate": {
+        "payload": {
+          "definition": "Context category for knowledge used in practical activities.",
+          "domain_type": "practical",
+          "kind": "domain",
+          "labels": [
+            {
+              "language": "en",
+              "text": "Practical skills"
+            },
+            {
+              "language": "zh",
+              "text": "实践技能"
+            }
+          ],
+          "scope_note": "Local organizing proposal, not a learning path.",
+          "slug": "practical-skills"
+        },
+        "provenance": {
+          "actor": "Codex",
+          "evidence": [],
+          "generator": "saved R3 pilot suggestions",
+          "origin": "ai",
+          "rationale": "AI-authored pilot catalog suggestion; owner review required.",
+          "unsupported_reason": "Candidate metadata only; no verified claim, source certification or seed readiness."
+        },
+        "schema_version": 1
+      },
+      "expected_version": 0,
+      "identity_key": "practical-skills"
+    },
+    {
+      "candidate": {
+        "payload": {
+          "from_domain_id": "domain_e16f56e4-6198-5784-a194-292aa8d37fa5",
+          "kind": "domain_relation",
+          "predicate": "SUBDOMAIN_OF",
+          "rationale": "Candidate local organizing perspective; multiple parents allowed.",
+          "to_domain_id": "domain_3d896a18-35af-5e8e-a504-7563ce9cb0fc"
+        },
+        "provenance": {
+          "actor": "Codex",
+          "evidence": [],
+          "generator": "saved R3 pilot suggestions",
+          "origin": "ai",
+          "rationale": "AI-authored pilot catalog suggestion; owner review required.",
+          "unsupported_reason": "Candidate metadata only; no verified claim, source certification or seed readiness."
+        },
+        "schema_version": 1
+      },
+      "expected_version": 0,
+      "identity_key": "astronomy:parent:natural-sciences"
+    },
+    {
+      "candidate": {
+        "payload": {
+          "from_domain_id": "domain_3bca7d81-3c89-5157-a4b6-6b420af90bea",
+          "kind": "domain_relation",
+          "predicate": "SUBDOMAIN_OF",
+          "rationale": "Candidate local organizing perspective; multiple parents allowed.",
+          "to_domain_id": "domain_6a7dec69-47f3-5393-beff-5d5cabf3a96a"
+        },
+        "provenance": {
+          "actor": "Codex",
+          "evidence": [],
+          "generator": "saved R3 pilot suggestions",
+          "origin": "ai",
+          "rationale": "AI-authored pilot catalog suggestion; owner review required.",
+          "unsupported_reason": "Candidate metadata only; no verified claim, source certification or seed readiness."
+        },
+        "schema_version": 1
+      },
+      "expected_version": 0,
+      "identity_key": "latin:parent:humanities"
+    },
+    {
+      "candidate": {
+        "payload": {
+          "from_domain_id": "domain_1475f1be-5537-5740-acd8-9caf152393f3",
+          "kind": "domain_relation",
+          "predicate": "SUBDOMAIN_OF",
+          "rationale": "Candidate local organizing perspective; multiple parents allowed.",
+          "to_domain_id": "domain_7b80d4fe-ba24-5062-9877-bb3976362eb2"
+        },
+        "provenance": {
+          "actor": "Codex",
+          "evidence": [],
+          "generator": "saved R3 pilot suggestions",
+          "origin": "ai",
+          "rationale": "AI-authored pilot catalog suggestion; owner review required.",
+          "unsupported_reason": "Candidate metadata only; no verified claim, source certification or seed readiness."
+        },
+        "schema_version": 1
+      },
+      "expected_version": 0,
+      "identity_key": "fitness-nutrition:parent:health-studies"
+    },
+    {
+      "candidate": {
+        "payload": {
+          "from_domain_id": "domain_1475f1be-5537-5740-acd8-9caf152393f3",
+          "kind": "domain_relation",
+          "predicate": "SUBDOMAIN_OF",
+          "rationale": "Candidate local organizing perspective; multiple parents allowed.",
+          "to_domain_id": "domain_e9551400-fb26-535c-80a0-daad07481838"
+        },
+        "provenance": {
+          "actor": "Codex",
+          "evidence": [],
+          "generator": "saved R3 pilot suggestions",
+          "origin": "ai",
+          "rationale": "AI-authored pilot catalog suggestion; owner review required.",
+          "unsupported_reason": "Candidate metadata only; no verified claim, source certification or seed readiness."
+        },
+        "schema_version": 1
+      },
+      "expected_version": 0,
+      "identity_key": "fitness-nutrition:parent:practical-skills"
+    },
+    {
+      "candidate": {
+        "payload": {
+          "from_domain_id": "domain_a7c66065-6a7a-5c0a-8652-2bcd4466e91c",
+          "kind": "domain_relation",
+          "predicate": "RELATED_TO",
+          "rationale": "An interest bridge from space-themed fiction to astronomy; game mechanics are not scientific evidence.",
+          "to_domain_id": "domain_e16f56e4-6198-5784-a194-292aa8d37fa5"
+        },
+        "provenance": {
+          "actor": "Codex",
+          "evidence": [],
+          "generator": "saved R3 pilot suggestions",
+          "origin": "ai",
+          "rationale": "AI-authored pilot catalog suggestion; owner review required.",
+          "unsupported_reason": "Candidate metadata only; no verified claim, source certification or seed readiness."
+        },
+        "schema_version": 1
+      },
+      "expected_version": 0,
+      "identity_key": "stellaris:related:astronomy"
+    },
+    {
+      "candidate": {
+        "payload": {
+          "description": "Candidate orientation topic; content acquisition and verification remain future work.",
+          "kind": "topic",
+          "labels": [
+            {
+              "language": "en",
+              "text": "Observational methods"
+            },
+            {
+              "language": "zh",
+              "text": "观测方法"
+            }
+          ]
+        },
+        "provenance": {
+          "actor": "Codex",
+          "evidence": [],
+          "generator": "saved R3 pilot suggestions",
+          "origin": "ai",
+          "rationale": "AI-authored pilot catalog suggestion; owner review required.",
+          "unsupported_reason": "Candidate metadata only; no verified claim, source certification or seed readiness."
+        },
+        "schema_version": 1
+      },
+      "expected_version": 0,
+      "identity_key": "astronomy:orientation"
+    },
+    {
+      "candidate": {
+        "payload": {
+          "domain_id": "domain_e16f56e4-6198-5784-a194-292aa8d37fa5",
+          "kind": "domain_topic",
+          "rationale": "Small pilot orientation membership.",
+          "topic_id": "topic_12674004-18a3-585d-86e1-802dae64a3e5"
+        },
+        "provenance": {
+          "actor": "Codex",
+          "evidence": [],
+          "generator": "saved R3 pilot suggestions",
+          "origin": "ai",
+          "rationale": "AI-authored pilot catalog suggestion; owner review required.",
+          "unsupported_reason": "Candidate metadata only; no verified claim, source certification or seed readiness."
+        },
+        "schema_version": 1
+      },
+      "expected_version": 0,
+      "identity_key": "astronomy:orientation"
+    },
+    {
+      "candidate": {
+        "payload": {
+          "description": "Candidate orientation topic; content acquisition and verification remain future work.",
+          "kind": "topic",
+          "labels": [
+            {
+              "language": "en",
+              "text": "Grammar and reading"
+            },
+            {
+              "language": "zh",
+              "text": "语法与阅读"
+            }
+          ]
+        },
+        "provenance": {
+          "actor": "Codex",
+          "evidence": [],
+          "generator": "saved R3 pilot suggestions",
+          "origin": "ai",
+          "rationale": "AI-authored pilot catalog suggestion; owner review required.",
+          "unsupported_reason": "Candidate metadata only; no verified claim, source certification or seed readiness."
+        },
+        "schema_version": 1
+      },
+      "expected_version": 0,
+      "identity_key": "latin:orientation"
+    },
+    {
+      "candidate": {
+        "payload": {
+          "domain_id": "domain_3bca7d81-3c89-5157-a4b6-6b420af90bea",
+          "kind": "domain_topic",
+          "rationale": "Small pilot orientation membership.",
+          "topic_id": "topic_1cfbf2f4-e6f5-595d-9829-e541b00003a8"
+        },
+        "provenance": {
+          "actor": "Codex",
+          "evidence": [],
+          "generator": "saved R3 pilot suggestions",
+          "origin": "ai",
+          "rationale": "AI-authored pilot catalog suggestion; owner review required.",
+          "unsupported_reason": "Candidate metadata only; no verified claim, source certification or seed readiness."
+        },
+        "schema_version": 1
+      },
+      "expected_version": 0,
+      "identity_key": "latin:orientation"
+    },
+    {
+      "candidate": {
+        "payload": {
+          "description": "Candidate orientation topic; content acquisition and verification remain future work.",
+          "kind": "topic",
+          "labels": [
+            {
+              "language": "en",
+              "text": "Evidence and applicability"
+            },
+            {
+              "language": "zh",
+              "text": "证据与适用条件"
+            }
+          ]
+        },
+        "provenance": {
+          "actor": "Codex",
+          "evidence": [],
+          "generator": "saved R3 pilot suggestions",
+          "origin": "ai",
+          "rationale": "AI-authored pilot catalog suggestion; owner review required.",
+          "unsupported_reason": "Candidate metadata only; no verified claim, source certification or seed readiness."
+        },
+        "schema_version": 1
+      },
+      "expected_version": 0,
+      "identity_key": "fitness-nutrition:orientation"
+    },
+    {
+      "candidate": {
+        "payload": {
+          "domain_id": "domain_1475f1be-5537-5740-acd8-9caf152393f3",
+          "kind": "domain_topic",
+          "rationale": "Small pilot orientation membership.",
+          "topic_id": "topic_f8875b8d-553a-54d2-a020-d20d10265af9"
+        },
+        "provenance": {
+          "actor": "Codex",
+          "evidence": [],
+          "generator": "saved R3 pilot suggestions",
+          "origin": "ai",
+          "rationale": "AI-authored pilot catalog suggestion; owner review required.",
+          "unsupported_reason": "Candidate metadata only; no verified claim, source certification or seed readiness."
+        },
+        "schema_version": 1
+      },
+      "expected_version": 0,
+      "identity_key": "fitness-nutrition:orientation"
+    },
+    {
+      "candidate": {
+        "payload": {
+          "description": "Candidate orientation topic; content acquisition and verification remain future work.",
+          "kind": "topic",
+          "labels": [
+            {
+              "language": "en",
+              "text": "Rules and updates"
+            },
+            {
+              "language": "zh",
+              "text": "规则与更新"
+            }
+          ]
+        },
+        "provenance": {
+          "actor": "Codex",
+          "evidence": [],
+          "generator": "saved R3 pilot suggestions",
+          "origin": "ai",
+          "rationale": "AI-authored pilot catalog suggestion; owner review required.",
+          "unsupported_reason": "Candidate metadata only; no verified claim, source certification or seed readiness."
+        },
+        "schema_version": 1
+      },
+      "expected_version": 0,
+      "identity_key": "stellaris:orientation"
+    },
+    {
+      "candidate": {
+        "payload": {
+          "domain_id": "domain_a7c66065-6a7a-5c0a-8652-2bcd4466e91c",
+          "kind": "domain_topic",
+          "rationale": "Small pilot orientation membership.",
+          "topic_id": "topic_3131f0f2-3dc1-5921-bd99-e06edfaed0f7"
+        },
+        "provenance": {
+          "actor": "Codex",
+          "evidence": [],
+          "generator": "saved R3 pilot suggestions",
+          "origin": "ai",
+          "rationale": "AI-authored pilot catalog suggestion; owner review required.",
+          "unsupported_reason": "Candidate metadata only; no verified claim, source certification or seed readiness."
+        },
+        "schema_version": 1
+      },
+      "expected_version": 0,
+      "identity_key": "stellaris:orientation"
+    },
+    {
+      "candidate": {
+        "payload": {
+          "description": "Catalog stub for 证据语境; no definition, extracted claim or rule assertion is supplied.",
+          "kind": "concept",
+          "labels": [
+            {
+              "language": "en",
+              "text": "Evidence context"
+            },
+            {
+              "language": "zh",
+              "text": "证据语境"
+            }
+          ]
+        },
+        "provenance": {
+          "actor": "Codex",
+          "evidence": [],
+          "generator": "saved R3 pilot suggestions",
+          "origin": "ai",
+          "rationale": "AI-authored pilot catalog suggestion; owner review required.",
+          "unsupported_reason": "Candidate metadata only; no verified claim, source certification or seed readiness."
+        },
+        "schema_version": 1
+      },
+      "expected_version": 0,
+      "identity_key": "evidence-context"
+    },
+    {
+      "candidate": {
+        "payload": {
+          "concept_id": "concept_4a796a88-9955-5c96-84e8-54a66d9c3aef",
+          "domain_id": "domain_e16f56e4-6198-5784-a194-292aa8d37fa5",
+          "kind": "domain_concept",
+          "rationale": "Shared membership reuses identity; label ambiguity does not imply equivalence."
+        },
+        "provenance": {
+          "actor": "Codex",
+          "evidence": [],
+          "generator": "saved R3 pilot suggestions",
+          "origin": "ai",
+          "rationale": "AI-authored pilot catalog suggestion; owner review required.",
+          "unsupported_reason": "Candidate metadata only; no verified claim, source certification or seed readiness."
+        },
+        "schema_version": 1
+      },
+      "expected_version": 0,
+      "identity_key": "astronomy:evidence-context"
+    },
+    {
+      "candidate": {
+        "payload": {
+          "concept_id": "concept_4a796a88-9955-5c96-84e8-54a66d9c3aef",
+          "domain_id": "domain_1475f1be-5537-5740-acd8-9caf152393f3",
+          "kind": "domain_concept",
+          "rationale": "Shared membership reuses identity; label ambiguity does not imply equivalence."
+        },
+        "provenance": {
+          "actor": "Codex",
+          "evidence": [],
+          "generator": "saved R3 pilot suggestions",
+          "origin": "ai",
+          "rationale": "AI-authored pilot catalog suggestion; owner review required.",
+          "unsupported_reason": "Candidate metadata only; no verified claim, source certification or seed readiness."
+        },
+        "schema_version": 1
+      },
+      "expected_version": 0,
+      "identity_key": "fitness-nutrition:evidence-context"
+    },
+    {
+      "candidate": {
+        "payload": {
+          "description": "Catalog stub for 语法格; no definition, extracted claim or rule assertion is supplied.",
+          "kind": "concept",
+          "labels": [
+            {
+              "language": "en",
+              "text": "Case"
+            },
+            {
+              "language": "zh",
+              "text": "语法格"
+            },
+            {
+              "language": "la",
+              "text": "casus"
+            }
+          ]
+        },
+        "provenance": {
+          "actor": "Codex",
+          "evidence": [],
+          "generator": "saved R3 pilot suggestions",
+          "origin": "ai",
+          "rationale": "AI-authored pilot catalog suggestion; owner review required.",
+          "unsupported_reason": "Candidate metadata only; no verified claim, source certification or seed readiness."
+        },
+        "schema_version": 1
+      },
+      "expected_version": 0,
+      "identity_key": "latin-case"
+    },
+    {
+      "candidate": {
+        "payload": {
+          "concept_id": "concept_56a21c20-1674-51b1-acf8-b7deb6130726",
+          "domain_id": "domain_3bca7d81-3c89-5157-a4b6-6b420af90bea",
+          "kind": "domain_concept",
+          "rationale": "Shared membership reuses identity; label ambiguity does not imply equivalence."
+        },
+        "provenance": {
+          "actor": "Codex",
+          "evidence": [],
+          "generator": "saved R3 pilot suggestions",
+          "origin": "ai",
+          "rationale": "AI-authored pilot catalog suggestion; owner review required.",
+          "unsupported_reason": "Candidate metadata only; no verified claim, source certification or seed readiness."
+        },
+        "schema_version": 1
+      },
+      "expected_version": 0,
+      "identity_key": "latin:latin-case"
+    },
+    {
+      "candidate": {
+        "payload": {
+          "description": "Catalog stub for 个案; no definition, extracted claim or rule assertion is supplied.",
+          "kind": "concept",
+          "labels": [
+            {
+              "language": "en",
+              "text": "Case"
+            },
+            {
+              "language": "zh",
+              "text": "个案"
+            }
+          ]
+        },
+        "provenance": {
+          "actor": "Codex",
+          "evidence": [],
+          "generator": "saved R3 pilot suggestions",
+          "origin": "ai",
+          "rationale": "AI-authored pilot catalog suggestion; owner review required.",
+          "unsupported_reason": "Candidate metadata only; no verified claim, source certification or seed readiness."
+        },
+        "schema_version": 1
+      },
+      "expected_version": 0,
+      "identity_key": "health-case"
+    },
+    {
+      "candidate": {
+        "payload": {
+          "concept_id": "concept_788bba3d-96a2-5c81-8269-4b00a4f07412",
+          "domain_id": "domain_1475f1be-5537-5740-acd8-9caf152393f3",
+          "kind": "domain_concept",
+          "rationale": "Shared membership reuses identity; label ambiguity does not imply equivalence."
+        },
+        "provenance": {
+          "actor": "Codex",
+          "evidence": [],
+          "generator": "saved R3 pilot suggestions",
+          "origin": "ai",
+          "rationale": "AI-authored pilot catalog suggestion; owner review required.",
+          "unsupported_reason": "Candidate metadata only; no verified claim, source certification or seed readiness."
+        },
+        "schema_version": 1
+      },
+      "expected_version": 0,
+      "identity_key": "fitness-nutrition:health-case"
+    },
+    {
+      "candidate": {
+        "payload": {
+          "description": "Catalog stub for 规则版本; no definition, extracted claim or rule assertion is supplied.",
+          "kind": "concept",
+          "labels": [
+            {
+              "language": "en",
+              "text": "Rule version"
+            },
+            {
+              "language": "zh",
+              "text": "规则版本"
+            }
+          ]
+        },
+        "provenance": {
+          "actor": "Codex",
+          "evidence": [],
+          "generator": "saved R3 pilot suggestions",
+          "origin": "ai",
+          "rationale": "AI-authored pilot catalog suggestion; owner review required.",
+          "unsupported_reason": "Candidate metadata only; no verified claim, source certification or seed readiness."
+        },
+        "schema_version": 1
+      },
+      "expected_version": 0,
+      "identity_key": "rule-version"
+    },
+    {
+      "candidate": {
+        "payload": {
+          "concept_id": "concept_39f203f2-9760-5415-ad34-cee712c1813a",
+          "domain_id": "domain_a7c66065-6a7a-5c0a-8652-2bcd4466e91c",
+          "kind": "domain_concept",
+          "rationale": "Shared membership reuses identity; label ambiguity does not imply equivalence."
+        },
+        "provenance": {
+          "actor": "Codex",
+          "evidence": [],
+          "generator": "saved R3 pilot suggestions",
+          "origin": "ai",
+          "rationale": "AI-authored pilot catalog suggestion; owner review required.",
+          "unsupported_reason": "Candidate metadata only; no verified claim, source certification or seed readiness."
+        },
+        "schema_version": 1
+      },
+      "expected_version": 0,
+      "identity_key": "stellaris:rule-version"
+    },
+    {
+      "candidate": {
+        "payload": {
+          "creator": "NASA",
+          "kind": "source",
+          "labels": [
+            {
+              "language": "en",
+              "text": "NASA Universe"
+            }
+          ],
+          "license": null,
+          "source_kind": "institution",
+          "uri": "https://science.nasa.gov/universe/"
+        },
+        "provenance": {
+          "actor": "Codex",
+          "evidence": [],
+          "generator": "saved R3 pilot suggestions",
+          "origin": "ai",
+          "rationale": "Bounded official-page discovery on 2026-10-29. Web text inspected; media permissions and individual scientific claims not checked.",
+          "unsupported_reason": "Candidate metadata only; no verified claim, source certification or seed readiness."
+        },
+        "schema_version": 1
+      },
+      "expected_version": 0,
+      "identity_key": "nasa-universe"
+    },
+    {
+      "candidate": {
+        "payload": {
+          "authority_scope": "NASA science communication; examine underlying research for detailed claims.",
+          "domain_id": "domain_e16f56e4-6198-5784-a194-292aa8d37fa5",
+          "intended_use": "Manual source selection before any content acquisition.",
+          "kind": "domain_source",
+          "limitations": "Web text inspected; media permissions and individual scientific claims not checked.",
+          "rationale": "Institutional astronomy orientation and source discovery.",
+          "source_id": "source_b9c09faa-f73f-50d5-a912-f1661fc71376"
+        },
+        "provenance": {
+          "actor": "Codex",
+          "evidence": [
+            {
+              "anchor": "landing page / candidate resource identity",
+              "source_id": "source_b9c09faa-f73f-50d5-a912-f1661fc71376",
+              "source_version": 1
+            }
+          ],
+          "generator": "saved R3 pilot suggestions",
+          "origin": "ai",
+          "rationale": "AI-authored pilot catalog suggestion; owner review required.",
+          "unsupported_reason": "Candidate metadata only; no verified claim, source certification or seed readiness."
+        },
+        "schema_version": 1
+      },
+      "expected_version": 0,
+      "identity_key": "astronomy:nasa-universe"
+    },
+    {
+      "candidate": {
+        "payload": {
+          "creator": "IAU",
+          "kind": "source",
+          "labels": [
+            {
+              "language": "en",
+              "text": "International Astronomical Union"
+            }
+          ],
+          "license": null,
+          "source_kind": "academic_organization",
+          "uri": "https://www.iau.org/"
+        },
+        "provenance": {
+          "actor": "Codex",
+          "evidence": [],
+          "generator": "saved R3 pilot suggestions",
+          "origin": "ai",
+          "rationale": "Bounded official-page discovery on 2026-10-29. Homepage inspected; no resource-by-resource authority or reuse audit.",
+          "unsupported_reason": "Candidate metadata only; no verified claim, source certification or seed readiness."
+        },
+        "schema_version": 1
+      },
+      "expected_version": 0,
+      "identity_key": "iau"
+    },
+    {
+      "candidate": {
+        "payload": {
+          "authority_scope": "Astronomy organization; recommendation does not validate all linked content.",
+          "domain_id": "domain_e16f56e4-6198-5784-a194-292aa8d37fa5",
+          "intended_use": "Manual source selection before any content acquisition.",
+          "kind": "domain_source",
+          "limitations": "Homepage inspected; no resource-by-resource authority or reuse audit.",
+          "rationale": "Professional organization for locating astronomy resources.",
+          "source_id": "source_ffcc0cd1-59bd-5214-b824-128f58802ee0"
+        },
+        "provenance": {
+          "actor": "Codex",
+          "evidence": [
+            {
+              "anchor": "landing page / candidate resource identity",
+              "source_id": "source_ffcc0cd1-59bd-5214-b824-128f58802ee0",
+              "source_version": 1
+            }
+          ],
+          "generator": "saved R3 pilot suggestions",
+          "origin": "ai",
+          "rationale": "AI-authored pilot catalog suggestion; owner review required.",
+          "unsupported_reason": "Candidate metadata only; no verified claim, source certification or seed readiness."
+        },
+        "schema_version": 1
+      },
+      "expected_version": 0,
+      "identity_key": "astronomy:iau"
+    },
+    {
+      "candidate": {
+        "payload": {
+          "creator": "OpenStax",
+          "kind": "source",
+          "labels": [
+            {
+              "language": "en",
+              "text": "OpenStax Astronomy 2e"
+            }
+          ],
+          "license": null,
+          "source_kind": "open_textbook",
+          "uri": "https://openstax.org/details/books/astronomy-2e"
+        },
+        "provenance": {
+          "actor": "Codex",
+          "evidence": [],
+          "generator": "saved R3 pilot suggestions",
+          "origin": "ai",
+          "rationale": "Bounded official-page discovery on 2026-10-29. URL returned a title but no readable body; license and edition content remain unverified.",
+          "unsupported_reason": "Candidate metadata only; no verified claim, source certification or seed readiness."
+        },
+        "schema_version": 1
+      },
+      "expected_version": 0,
+      "identity_key": "openstax-astronomy"
+    },
+    {
+      "candidate": {
+        "payload": {
+          "authority_scope": "Proposed textbook role, pending manual content inspection.",
+          "domain_id": "domain_e16f56e4-6198-5784-a194-292aa8d37fa5",
+          "intended_use": "Manual source selection before any content acquisition.",
+          "kind": "domain_source",
+          "limitations": "URL returned a title but no readable body; license and edition content remain unverified.",
+          "rationale": "Candidate structured introductory textbook.",
+          "source_id": "source_f031e74b-d33a-5357-9392-15e2044eb69b"
+        },
+        "provenance": {
+          "actor": "Codex",
+          "evidence": [
+            {
+              "anchor": "landing page / candidate resource identity",
+              "source_id": "source_f031e74b-d33a-5357-9392-15e2044eb69b",
+              "source_version": 1
+            }
+          ],
+          "generator": "saved R3 pilot suggestions",
+          "origin": "ai",
+          "rationale": "AI-authored pilot catalog suggestion; owner review required.",
+          "unsupported_reason": "Candidate metadata only; no verified claim, source certification or seed readiness."
+        },
+        "schema_version": 1
+      },
+      "expected_version": 0,
+      "identity_key": "astronomy:openstax-astronomy"
+    },
+    {
+      "candidate": {
+        "payload": {
+          "creator": "Dickinson College",
+          "kind": "source",
+          "labels": [
+            {
+              "language": "en",
+              "text": "Dickinson reference works"
+            }
+          ],
+          "license": null,
+          "source_kind": "reference",
+          "uri": "https://dcc.dickinson.edu/home-page-ref-works"
+        },
+        "provenance": {
+          "actor": "Codex",
+          "evidence": [],
+          "generator": "saved R3 pilot suggestions",
+          "origin": "ai",
+          "rationale": "Bounded official-page discovery on 2026-10-29. Index inspected; original grammar root returned 404; use index to locate specific sections. License unknown.",
+          "unsupported_reason": "Candidate metadata only; no verified claim, source certification or seed readiness."
+        },
+        "schema_version": 1
+      },
+      "expected_version": 0,
+      "identity_key": "dcc-reference"
+    },
+    {
+      "candidate": {
+        "payload": {
+          "authority_scope": "College-hosted reference discovery; individual editions require review.",
+          "domain_id": "domain_3bca7d81-3c89-5157-a4b6-6b420af90bea",
+          "intended_use": "Manual source selection before any content acquisition.",
+          "kind": "domain_source",
+          "limitations": "Index inspected; original grammar root returned 404; use index to locate specific sections. License unknown.",
+          "rationale": "Academic reference index linking Latin grammar and vocabulary.",
+          "source_id": "source_d74fcabd-8008-50ca-af3f-89f7d3997997"
+        },
+        "provenance": {
+          "actor": "Codex",
+          "evidence": [
+            {
+              "anchor": "landing page / candidate resource identity",
+              "source_id": "source_d74fcabd-8008-50ca-af3f-89f7d3997997",
+              "source_version": 1
+            }
+          ],
+          "generator": "saved R3 pilot suggestions",
+          "origin": "ai",
+          "rationale": "AI-authored pilot catalog suggestion; owner review required.",
+          "unsupported_reason": "Candidate metadata only; no verified claim, source certification or seed readiness."
+        },
+        "schema_version": 1
+      },
+      "expected_version": 0,
+      "identity_key": "latin:dcc-reference"
+    },
+    {
+      "candidate": {
+        "payload": {
+          "creator": "World Health Organization",
+          "kind": "source",
+          "labels": [
+            {
+              "language": "en",
+              "text": "WHO physical activity"
+            }
+          ],
+          "license": null,
+          "source_kind": "institution",
+          "uri": "https://www.who.int/health-topics/physical-activity"
+        },
+        "provenance": {
+          "actor": "Codex",
+          "evidence": [],
+          "generator": "saved R3 pilot suggestions",
+          "origin": "ai",
+          "rationale": "Bounded official-page discovery on 2026-10-29. No recommendation amounts imported. Conditions, populations and underlying evidence need separate review.",
+          "unsupported_reason": "Candidate metadata only; no verified claim, source certification or seed readiness."
+        },
+        "schema_version": 1
+      },
+      "expected_version": 0,
+      "identity_key": "who-activity"
+    },
+    {
+      "candidate": {
+        "payload": {
+          "authority_scope": "General public health orientation, not an individualized prescription.",
+          "domain_id": "domain_1475f1be-5537-5740-acd8-9caf152393f3",
+          "intended_use": "Manual source selection before any content acquisition.",
+          "kind": "domain_source",
+          "limitations": "No recommendation amounts imported. Conditions, populations and underlying evidence need separate review.",
+          "rationale": "Locate population-level public health context.",
+          "source_id": "source_de06ad05-365a-5bf3-959b-f6e97617019b"
+        },
+        "provenance": {
+          "actor": "Codex",
+          "evidence": [
+            {
+              "anchor": "landing page / candidate resource identity",
+              "source_id": "source_de06ad05-365a-5bf3-959b-f6e97617019b",
+              "source_version": 1
+            }
+          ],
+          "generator": "saved R3 pilot suggestions",
+          "origin": "ai",
+          "rationale": "AI-authored pilot catalog suggestion; owner review required.",
+          "unsupported_reason": "Candidate metadata only; no verified claim, source certification or seed readiness."
+        },
+        "schema_version": 1
+      },
+      "expected_version": 0,
+      "identity_key": "fitness-nutrition:who-activity"
+    },
+    {
+      "candidate": {
+        "payload": {
+          "creator": "USDA",
+          "kind": "source",
+          "labels": [
+            {
+              "language": "en",
+              "text": "USDA FoodData Central"
+            }
+          ],
+          "license": "CC0 1.0 (database data only)",
+          "source_kind": "database",
+          "uri": "https://fdc.nal.usda.gov/"
+        },
+        "provenance": {
+          "actor": "Codex",
+          "evidence": [
+            {
+              "anchor": "API Guide / Licensing (database data only)",
+              "source_id": "source_4478d108-919e-5168-b8bc-65f9f7f68c70",
+              "source_version": 1
+            }
+          ],
+          "generator": "saved R3 pilot suggestions",
+          "origin": "ai",
+          "rationale": "Bounded official-page discovery on 2026-10-29. No nutrient values imported; record units, sample basis and releases must accompany future claims.",
+          "unsupported_reason": "Candidate metadata only; no verified claim, source certification or seed readiness."
+        },
+        "schema_version": 1
+      },
+      "expected_version": 0,
+      "identity_key": "fooddata"
+    },
+    {
+      "candidate": {
+        "payload": {
+          "authority_scope": "Composition database; records vary by sampling, method and product.",
+          "domain_id": "domain_1475f1be-5537-5740-acd8-9caf152393f3",
+          "intended_use": "Manual source selection before any content acquisition.",
+          "kind": "domain_source",
+          "limitations": "No nutrient values imported; record units, sample basis and releases must accompany future claims.",
+          "rationale": "Locate food composition records with data-type metadata.",
+          "source_id": "source_cc992eb9-97ff-52a4-b3bf-f6a2590e389d"
+        },
+        "provenance": {
+          "actor": "Codex",
+          "evidence": [
+            {
+              "anchor": "landing page / candidate resource identity",
+              "source_id": "source_cc992eb9-97ff-52a4-b3bf-f6a2590e389d",
+              "source_version": 1
+            }
+          ],
+          "generator": "saved R3 pilot suggestions",
+          "origin": "ai",
+          "rationale": "AI-authored pilot catalog suggestion; owner review required.",
+          "unsupported_reason": "Candidate metadata only; no verified claim, source certification or seed readiness."
+        },
+        "schema_version": 1
+      },
+      "expected_version": 0,
+      "identity_key": "fitness-nutrition:fooddata"
+    },
+    {
+      "candidate": {
+        "payload": {
+          "creator": "USDA",
+          "kind": "source",
+          "labels": [
+            {
+              "language": "en",
+              "text": "FoodData Central API guide"
+            }
+          ],
+          "license": null,
+          "source_kind": "technical_documentation",
+          "uri": "https://fdc.nal.usda.gov/api-guide/"
+        },
+        "provenance": {
+          "actor": "Codex",
+          "evidence": [],
+          "generator": "saved R3 pilot suggestions",
+          "origin": "ai",
+          "rationale": "Bounded official-page discovery on 2026-10-29. API access requires a key; bootstrap makes no API calls. Data license does not establish documentation reuse rights.",
+          "unsupported_reason": "Candidate metadata only; no verified claim, source certification or seed readiness."
+        },
+        "schema_version": 1
+      },
+      "expected_version": 0,
+      "identity_key": "fooddata-api"
+    },
+    {
+      "candidate": {
+        "payload": {
+          "authority_scope": "Technical API usage, not dietary advice.",
+          "domain_id": "domain_1475f1be-5537-5740-acd8-9caf152393f3",
+          "intended_use": "Manual source selection before any content acquisition.",
+          "kind": "domain_source",
+          "limitations": "API access requires a key; bootstrap makes no API calls. Data license does not establish documentation reuse rights.",
+          "rationale": "Official interface documentation for future deterministic acquisition.",
+          "source_id": "source_4478d108-919e-5168-b8bc-65f9f7f68c70"
+        },
+        "provenance": {
+          "actor": "Codex",
+          "evidence": [
+            {
+              "anchor": "API Guide / Licensing",
+              "source_id": "source_4478d108-919e-5168-b8bc-65f9f7f68c70",
+              "source_version": 1
+            }
+          ],
+          "generator": "saved R3 pilot suggestions",
+          "origin": "ai",
+          "rationale": "AI-authored pilot catalog suggestion; owner review required.",
+          "unsupported_reason": "Candidate metadata only; no verified claim, source certification or seed readiness."
+        },
+        "schema_version": 1
+      },
+      "expected_version": 0,
+      "identity_key": "fitness-nutrition:fooddata-api"
+    },
+    {
+      "candidate": {
+        "payload": {
+          "creator": "Paradox Interactive",
+          "kind": "source",
+          "labels": [
+            {
+              "language": "en",
+              "text": "Stellaris publisher overview"
+            }
+          ],
+          "license": null,
+          "source_kind": "reference",
+          "uri": "https://www.paradoxinteractive.com/games/stellaris/about"
+        },
+        "provenance": {
+          "actor": "Codex",
+          "evidence": [],
+          "generator": "saved R3 pilot suggestions",
+          "origin": "ai",
+          "rationale": "Bounded official-page discovery on 2026-10-29. No rule values, patch dates or DLC assumptions imported; marketing text is not mechanics evidence.",
+          "unsupported_reason": "Candidate metadata only; no verified claim, source certification or seed readiness."
+        },
+        "schema_version": 1
+      },
+      "expected_version": 0,
+      "identity_key": "stellaris-publisher"
+    },
+    {
+      "candidate": {
+        "payload": {
+          "authority_scope": "Publisher product context; not a complete versioned rules reference.",
+          "domain_id": "domain_a7c66065-6a7a-5c0a-8652-2bcd4466e91c",
+          "intended_use": "Manual source selection before any content acquisition.",
+          "kind": "domain_source",
+          "limitations": "No rule values, patch dates or DLC assumptions imported; marketing text is not mechanics evidence.",
+          "rationale": "Publisher source for game identity and future official update discovery.",
+          "source_id": "source_d55b9adb-4f01-59de-a0e9-6e97ac80f5aa"
+        },
+        "provenance": {
+          "actor": "Codex",
+          "evidence": [
+            {
+              "anchor": "landing page / candidate resource identity",
+              "source_id": "source_d55b9adb-4f01-59de-a0e9-6e97ac80f5aa",
+              "source_version": 1
+            }
+          ],
+          "generator": "saved R3 pilot suggestions",
+          "origin": "ai",
+          "rationale": "AI-authored pilot catalog suggestion; owner review required.",
+          "unsupported_reason": "Candidate metadata only; no verified claim, source certification or seed readiness."
+        },
+        "schema_version": 1
+      },
+      "expected_version": 0,
+      "identity_key": "stellaris:stellaris-publisher"
+    },
+    {
+      "candidate": {
+        "payload": {
+          "creator": "UNESCO Institute for Statistics",
+          "kind": "source",
+          "labels": [
+            {
+              "language": "en",
+              "text": "UNESCO ISCED-F metadata (2013; descriptions issued 2015)"
+            }
+          ],
+          "license": "CC BY-SA 3.0 IGO",
+          "source_kind": "taxonomy",
+          "uri": "https://www.uis.unesco.org/sites/default/files/medias/fichiers/2025/04/international-standard-classification-of-education-fields-of-education-and-training-2013-detailed-field-descriptions-2015-en.pdf",
+          "version_tag": "ISCED-F-2013/descriptions-2015"
+        },
+        "provenance": {
+          "actor": "Codex",
+          "evidence": [],
+          "generator": "saved R3 pilot suggestions",
+          "origin": "ai",
+          "rationale": "Native code/label excerpt attributed to UNESCO-UIS (2015), DOI 10.15220/978-92-9189-179-5-en. License stated on PDF page 2; precise publication day unknown.",
+          "unsupported_reason": "Candidate metadata only; no verified claim, source certification or seed readiness."
+        },
+        "schema_version": 1
+      },
+      "expected_version": 0,
+      "identity_key": "unesco-isced-f-2013"
+    }
+  ]
+}

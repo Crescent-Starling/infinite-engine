@@ -8,6 +8,14 @@ from uuid import UUID, uuid5
 REGISTRY_NAMESPACE = UUID("0691e948-1e99-5da2-a366-0a088a3c7869")
 KINDS = frozenset(
     {
+        "source_provider",
+        "source_document",
+        "source_anchor",
+        "taxonomy_entry",
+        "domain_mapping",
+        "category",
+        "domain_category",
+        "knowledge_space",
         "domain",
         "source",
         "topic",

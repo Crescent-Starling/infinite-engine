@@ -1,0 +1,23 @@
+format_version: 1
+profile_id: mock-astronomy
+revision: 1
+domain:
+  id: domain_be17a8f3-c87e-5cc3-8a05-b38f74e6852d
+  version: 1
+purpose: Prepare reviewable Astronomy source candidates
+languages:
+- en
+queries:
+- Astronomy introductory references
+adapters:
+- web
+- image
+inclusion:
+- Explicit provenance and edition/version metadata
+exclusion:
+- Unattributed copies or unsupported authority claims
+provenance:
+  origin: test_fixture
+  actor: fixture-author
+  rationale: Synthetic architecture example only
+  unsupported_reason: Not researched, acquired or professionally verified

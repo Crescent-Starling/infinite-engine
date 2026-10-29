@@ -17,6 +17,8 @@ REQUIRED = [
             "ARCHITECTURE",
             "DATA_CONTRACTS",
             "DOMAIN_REGISTRY",
+            "DOMAIN_ARCHITECTURE",
+            "SOURCE_REGISTRY",
             "LEARNING_ENGINE",
             "DEMOS",
             "VALIDATION",
@@ -30,6 +32,8 @@ REQUIRED = [
             "00-repository-foundation",
             "01-domain-registry",
             "02-knowledge-foundation",
+            "domain-universe-bootstrap",
+            "custom-domain-lifecycle",
         )
     ],
 ]
@@ -38,6 +42,7 @@ REQUIRED = [
 def main() -> int:
     errors = [f"Missing: {name}" for name in REQUIRED if not (ROOT / name).is_file()]
     documents = [*ROOT.glob("*.md"), *ROOT.glob("docs/*.md"), *ROOT.glob("tasks/*.md")]
+    documents.extend(ROOT.glob("skills/**/*.md"))
     for document in documents:
         for target in re.findall(r"\[[^\]]*\]\(([^)]+)\)", document.read_text()):
             if "://" in target or target.startswith("#"):

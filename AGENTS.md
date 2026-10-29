@@ -27,6 +27,11 @@ These instructions apply to the entire repository. Read `docs/PROJECT_SPEC.md`, 
 12. Preserve knowledge IDs and migration compatibility. All destructive writes require explicit safeguards.
 13. Skill text is instructions, not code-execution permission. Tool access is managed by host-controlled allowlists.
 14. Avoid designing addictive engagement loops (forced streaks, frequent nudges). User controls optional feedback.
+15. Preset/custom describe Domain management, not credibility. Use one Domain schema and shared downstream services; allow overlapping Custom Domains without a seed or web access.
+16. Domain scope != Knowledge Space != internal knowledge structure. Prefer one primary local space per selected Domain; no accounts/global identity resolution or premature multi-space management.
+17. Categories are navigation metadata, not implicit SUBDOMAIN_OF edges. Keep the broad preset asset shallow; build internal Subdomains/Topics/Concepts only after entry or from a seed.
+18. Users may add sources to preset/custom spaces without administrative approval. Personal acceptance != metadata review != source checks != claim verification. Overrides and view edits never silently mutate curated defaults.
+19. Registry data and application development are independent tracks. Bulk domain generation requires its own bounded authorization; see DOMAIN_ARCHITECTURE and the domain-universe-bootstrap task.
 
 ## Engineering defaults (change only via documented ADR)
 

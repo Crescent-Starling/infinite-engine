@@ -1,0 +1,16 @@
+format_version: 1
+plan_id: mock-stellaris-plan
+revision: 1
+profile_id: mock-stellaris
+profile_revision: 1
+items:
+- document:
+    id: source_document_98d19d4b-f481-507d-95c2-e8acfd2cdd64
+    version: 1
+  action: metadata_only
+  rationale: No content permission or acquisition has been established
+provenance:
+  origin: test_fixture
+  actor: fixture-author
+  rationale: Synthetic architecture example only
+  unsupported_reason: Not researched, acquired or professionally verified

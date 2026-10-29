@@ -44,7 +44,16 @@ def digest_json(value: object) -> str:
 
 def references(candidate: Candidate) -> set[str]:
     values = candidate.payload.model_dump()
-    names = ("domain_id", "from_domain_id", "to_domain_id", "source_id", "topic_id", "concept_id")
+    names = (
+        "category_id",
+        "domain_id",
+        "from_domain_id",
+        "to_domain_id",
+        "source_id",
+        "topic_id",
+        "concept_id",
+        "taxonomy_entry_id",
+    )
     return {values[name] for name in names if name in values} | {
         item.source_id for item in candidate.provenance.evidence
     }

@@ -23,7 +23,8 @@ Views, personal state and agent calls communicate via APIs/services, not duplica
 
 ## Suggested bounded contexts
 
-- `catalog`: domain registry, readiness, source roster.
+- `catalog`: preset/custom Domain contracts, independent browsing categories, semantic domain relations, review/readiness and shared source metadata.
+- Local space services: one primary space, private source choices and overrides; future learning/view/conversation services reference its ID.
 - `ingest`: parser interfaces for text/images; normalized source, chunks, media, extraction candidates.
 - `knowledge`: typed entities/relations, provenance, review state, versions, domain extensions.
 - `views`: domain tree, concept prerequisites, local graph, source/evidence, learning path (latter can be heuristic P1).
@@ -66,7 +67,7 @@ Implemented package: `backend/infinite_engine` contains Pydantic Settings and a 
 
 Planned typed interfaces (design only): SourceRepository retrieves Source/Evidence by stable ID; KnowledgeRepository queries typed relations and commits reviewed revisions with expected-version checks; Retriever accepts query/domain/filter context and returns anchored matches plus support gaps; ModelProvider accepts explicit context and returns labeled proposals; ToolGateway validates tool name/arguments against host allowlists. Agent orchestration consumes these interfaces, never direct arbitrary SQL/filesystem/network access. Provider absence produces an explicit unavailable/insufficient-evidence result, never a fabricated answer.
 
-The View Engine projects domain multi-parent graphs, concept dependencies, evidence and learning paths without duplicating canonical objects. Personal Cognition stores user-authored records/events keyed to stable knowledge IDs and viewed revisions; it cannot overwrite Representation. Conversation and structure-first clients share services and navigation context.
+The View Engine projects internal learning structures, concept dependencies, evidence and learning paths without duplicating canonical objects. Global browsing categories are separate from semantic DomainRelation edges. Personal Cognition stores user-authored records/events keyed to stable knowledge IDs and viewed revisions; it cannot overwrite Representation. Conversation and structure-first clients share services and navigation context.
 
 Future flow: source registration → anchored parsing → candidate generation → deterministic validation → human review → transactional versioned persistence → retrieval/view projections. Personal interpretation goes to personal storage, not that promotion path. Catalog review and source checks do not certify knowledge claims or seed readiness.
 
@@ -86,4 +87,39 @@ Data flow: caller-supplied candidate → strict contract validation → typed re
 
 `bundles.py` validates and transactionally stages candidate bundles. `review_csv.py` exports per-kind field tables and checks them against immutable local export baselines. `review.py` applies operator decisions, validates approval dependency closure/effective curated graph, and reads the approved projection. `review_cli.py` exposes local commands with dry-run defaults and explicit --apply/--actor. No HTTP endpoint or frontend feature is added.
 
-Registry transactions now use nested savepoints, so existing single-candidate writes participate in outer bundle/review transactions without committing partial state. Errors or interruptions roll back the operation. CSV parsing and protected-field checks happen before mutation; stale/current state is rechecked inside the transaction. Source checks remain independent observations. R3 taxonomy mapping, source discovery and four-domain pilot remain planned.
+Registry transactions now use nested savepoints, so existing single-candidate writes participate in outer bundle/review transactions without committing partial state. Errors or interruptions roll back the operation. CSV parsing and protected-field checks happen before mutation; stale/current state is rechecked inside the transaction. Source checks remain independent observations. R3 adds taxonomy mapping, bounded source discovery and a four-domain pilot as described below.
+
+## Registry R3 implementation
+
+`catalog/bootstrap.py` adapts a pinned local taxonomy excerpt plus recorded AI suggestions into an R2 CandidateBundle and coverage/extension report. It validates in a disposable SQLite store before atomically publishing a new output directory; it never opens a network client or approves data. Discovery is a separate bounded human/AI research activity, recorded with source URLs and uncertainty in `data/domain_registry/pilot/`.
+
+TaxonomyEntry and DomainMapping participate in the same repository, provenance, immutable revisions and per-kind CSV review path as other registry objects. Migration 003 adds their tables and exact-revision references. Source revision + release tag acts as the bounded release record; original external paths are locators, not local classification relationships. Curated closure checks the exact source/entry pins. The four-domain pilot stops at candidate review and extension-gap validation; no knowledge API, ingestion, graph UI or seed-readiness service is added.
+
+
+## ADR-010 Domain and source foundation
+
+The current boundaries and workflow are in [DOMAIN_ARCHITECTURE](DOMAIN_ARCHITECTURE.md); source autonomy is in [SOURCE_REGISTRY](SOURCE_REGISTRY.md). Domain is one scope contract with explicit preset/custom origin. Category/DomainCategory provide navigation independently from DomainRelation. The broad preset asset carries no requirement for globally populated Topics/Concepts.
+
+Migration 004 extends the existing registry and adds local knowledge_space, knowledge_space_source and space_override tables. LocalDomains in catalog/spaces.py provides shared manual creation/search/selection and local collection/override writes. All four domain origins use the same path; no seed or network is required. Personal source choice can point to unreviewed metadata without invoking the curated approval service. Library interfaces only: no new HTTP endpoints, frontend lifecycle or model discovery.
+
+Track A data flow: licensed/versioned foundation reference → recorded candidate metadata → deterministic validation → pending store → human review → approved dependency-closed release (release packaging remains planned). Track B flow: local discovery/custom creation → primary space → personal sources/overrides → optional compatible seed → progressive internal structures → shared views/RAG/learning history (later stages planned). Personal changes stay local; professional corrections re-enter the explicit proposal/review path.
+
+Do not instantiate multi-user identity or merge services. The local owner/process is the current trust boundary. Low-level registry writes are curation tools; future UI must route personal edits to overrides and preserve approved default revisions. Neither local acceptance nor SourceCheck outcomes establish claim truth.
+
+## Source discovery and acquisition boundary — ADR-012
+
+The `sources` package adds offline research interchange and metadata import, depending on the existing catalog/review/local-space services. Provider, Resource sidecar, Document and Anchor revisions persist through additive migration 005; SourceReview reuses the existing metadata review ledger. Acquisition plans and profiles are declarative proposals; adapter Protocols receive supplied bytes and have no tool privileges. Discovery, selection, acquisition, extraction and claim verification remain independent stages. See [SOURCE_DISCOVERY](SOURCE_DISCOVERY.md) for executable scope, format specifications, adapter designs and future host boundaries. No RAG/search Agent or production parser is integrated.
+
+## Multimodal acquisition extension — Phase 1 design
+
+[Multimodal acquisition](MULTIMODAL_ACQUISITION.md) separates Source Discovery, Source
+Acquisition, Multimodal Content Processing and Knowledge Extraction/Review. It defines
+adapter signatures, typed results/failures, subtitle-first video processing, immutable
+transcript corrections, temporal evidence, metadata-only subscriptions and host-enforced
+permissions. It extends the same Source identity and primary Knowledge Space, not a second
+video catalog. `catalog → ingest → knowledge/retrieval` denotes data flow; orchestration
+uses repository interfaces and adapters cannot invoke canonical promotion.
+
+This is design-only ADR-012. No acquisition adapters, media runtime, retrieval, platform
+connector or safety enforcement is implemented here. Existing M2 text/image requirements
+remain unchanged. See the [six bounded phases](../tasks/multimodal-acquisition.md).

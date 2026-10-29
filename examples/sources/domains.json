@@ -1,0 +1,110 @@
+{
+  "format_version": 1,
+  "batch_id": "mock-source-domains-v1",
+  "entries": [
+    {
+      "identity_key": "mock:sources:astronomy",
+      "candidate": {
+        "payload": {
+          "kind": "domain",
+          "labels": [
+            {
+              "language": "en",
+              "text": "Astronomy"
+            }
+          ],
+          "slug": "mock-source-astronomy",
+          "definition": "Mock Astronomy scope",
+          "scope_note": "Architecture fixture; no seed or verified knowledge",
+          "domain_type": "academic",
+          "origin": "preset",
+          "creation_method": "manual"
+        },
+        "provenance": {
+          "origin": "test_fixture",
+          "actor": "fixture-author",
+          "rationale": "Synthetic architecture example only",
+          "unsupported_reason": "Not researched, acquired or professionally verified"
+        }
+      }
+    },
+    {
+      "identity_key": "mock:sources:latin",
+      "candidate": {
+        "payload": {
+          "kind": "domain",
+          "labels": [
+            {
+              "language": "en",
+              "text": "Latin"
+            }
+          ],
+          "slug": "mock-source-latin",
+          "definition": "Mock Latin scope",
+          "scope_note": "Architecture fixture; no seed or verified knowledge",
+          "domain_type": "language",
+          "origin": "preset",
+          "creation_method": "manual"
+        },
+        "provenance": {
+          "origin": "test_fixture",
+          "actor": "fixture-author",
+          "rationale": "Synthetic architecture example only",
+          "unsupported_reason": "Not researched, acquired or professionally verified"
+        }
+      }
+    },
+    {
+      "identity_key": "mock:sources:fitness-nutrition",
+      "candidate": {
+        "payload": {
+          "kind": "domain",
+          "labels": [
+            {
+              "language": "en",
+              "text": "Fitness & Nutrition"
+            }
+          ],
+          "slug": "mock-source-fitness-nutrition",
+          "definition": "Mock Fitness & Nutrition scope",
+          "scope_note": "Architecture fixture; no seed or verified knowledge",
+          "domain_type": "practical",
+          "origin": "custom",
+          "creation_method": "manual"
+        },
+        "provenance": {
+          "origin": "test_fixture",
+          "actor": "fixture-author",
+          "rationale": "Synthetic architecture example only",
+          "unsupported_reason": "Not researched, acquired or professionally verified"
+        }
+      }
+    },
+    {
+      "identity_key": "mock:sources:stellaris",
+      "candidate": {
+        "payload": {
+          "kind": "domain",
+          "labels": [
+            {
+              "language": "en",
+              "text": "Stellaris"
+            }
+          ],
+          "slug": "mock-source-stellaris",
+          "definition": "Mock Stellaris scope",
+          "scope_note": "Architecture fixture; no seed or verified knowledge",
+          "domain_type": "game",
+          "origin": "custom",
+          "creation_method": "manual"
+        },
+        "provenance": {
+          "origin": "test_fixture",
+          "actor": "fixture-author",
+          "rationale": "Synthetic architecture example only",
+          "unsupported_reason": "Not researched, acquired or professionally verified"
+        }
+      }
+    }
+  ]
+}

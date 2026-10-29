@@ -1,0 +1,26 @@
+{
+  "format_version": 1,
+  "batch_id": "mock-fitness-nutrition-associations-v1",
+  "associations": [
+    {
+      "identity_key": "mock:sources:fitness-nutrition",
+      "candidate": {
+        "payload": {
+          "kind": "domain_source",
+          "domain_id": "domain_7cd7a86f-3d18-5b0a-b601-a46a2c9f0f15",
+          "source_id": "source_1b5223f7-805c-573d-9a3d-f52279ce0d6f",
+          "rationale": "Synthetic fixture for shared source services",
+          "intended_use": "Metadata workflow demonstration",
+          "authority_scope": "None established",
+          "limitations": "No individualized health advice; population/conditions and evidence pending"
+        },
+        "provenance": {
+          "origin": "test_fixture",
+          "actor": "fixture-author",
+          "rationale": "Synthetic architecture example only",
+          "unsupported_reason": "Not researched, acquired or professionally verified"
+        }
+      }
+    }
+  ]
+}

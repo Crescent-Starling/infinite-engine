@@ -1,0 +1,16 @@
+format_version: 1
+plan_id: mock-astronomy-plan
+revision: 1
+profile_id: mock-astronomy
+profile_revision: 1
+items:
+- document:
+    id: source_document_1e4e0708-7054-525c-99ed-df64de50459a
+    version: 1
+  action: metadata_only
+  rationale: No content permission or acquisition has been established
+provenance:
+  origin: test_fixture
+  actor: fixture-author
+  rationale: Synthetic architecture example only
+  unsupported_reason: Not researched, acquired or professionally verified

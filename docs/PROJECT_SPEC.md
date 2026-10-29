@@ -11,7 +11,7 @@ Existing AI knowledge systems can extract concepts, link Wiki pages, show backli
 
 Additional problems: repeated knowledge-base configuration for every new interest; unreliable or context-stripped answers; eager whole-corpus LLM extraction yields unaudited noisy graphs; curiosity and interest vary over months.
 
-**Primary goal:** A local-first generalizable workspace in which users can choose a domain, inspect a vetted Domain Seed, chat with a source-grounded AI mentor or navigate structured views, deepen a local topic as needed, save their own explanations/questions, and return later to recover the knowledge context.
+**Primary goal:** A local-first generalizable workspace in which users can choose a preset or create a custom domain, enter its Knowledge Space with or without a vetted Domain Seed, chat with a source-grounded AI mentor or navigate structured views, deepen a local topic as needed, save their own explanations/questions, and return later to recover the knowledge context.
 
 **Not the claim:** The app automatically makes users experts; all fields are fully built; LLM citations prove logical correctness; AI-generated summaries equal user learning.
 
@@ -38,7 +38,7 @@ Additional problems: repeated knowledge-base configuration for every new interes
 - More developed Skill library and user-editable template configs.
 
 ### Long-term (P2)
-- Broad prebuilt vetted Domain Seeds, robust continual updates, deep cross-domain semantic links.
+- Broader availability of optional vetted Domain Seeds, robust continual updates, deep cross-domain semantic links; broad preset coverage never requires a seed for every domain.
 - Learning analytics dashboard (multi-domain graph/timeline, weekly recaps), fun optional Observer interpretations and learning personas.
 - Optional Perspective Challenge; Cognitive Companion using user-affirmed history.
 - Local-model inference and optional multimedia modalities beyond text+image.
@@ -48,7 +48,7 @@ Additional problems: repeated knowledge-base configuration for every new interes
 ## 3. User journeys
 
 ### J1: First-time domain entry (structure-first)
-Choose Astronomy > see seed readiness and source summary > enter domain tree > open concept > see definitions & typed prerequisites > expand nested concept while preserving back navigation > inspect supporting text/image > ask mentor follow-up.
+Choose the Astronomy preset > open its primary Knowledge Space > see seed readiness and source summary > load an available vetted seed or start empty > enter an available domain tree > open concept > see definitions & typed prerequisites > expand nested concept while preserving back navigation > inspect supporting text/image > ask mentor follow-up.
 
 ### J2: First-time domain entry (conversation-first)
 Ask a question before navigating > Agent retrieves relevant source chunks and graph nodes > grounded answer with anchors > click associated concept to show tree location / prerequisite path > continue conversation with existing context.
@@ -129,8 +129,23 @@ Report results only after running a defined test. Distinguish user-perceived lea
 
 ## 10. Current foundation and long-term co-construction
 
-M0 implements only process health, local configuration and an unavailable-feature UI shell with engineering checks. There is no registry importer, persisted graph, retrieval or model integration yet. The course requirements and P1/P2 vision above remain intact.
+M0 implements only process health, local configuration and an unavailable-feature UI shell with engineering checks. Registry candidate/review/import, pilot replay and the minimal ADR-010 local Domain/space/source contracts now exist. The UI remains a shell; there is no full persisted knowledge graph, retrieval or model integration. The course requirements and P1/P2 vision above remain intact.
 
-The long-term Domain Intelligence Registry is a source-grounded, multilingual data asset distinct from Source Registry, vetted Domain Seeds and on-demand Extended Knowledge. Broad coverage is compatible with few ready seeds. Discovery and AI proposals require provenance and human review before curated import; see [DOMAIN_REGISTRY.md](DOMAIN_REGISTRY.md).
+The long-term Domain Intelligence Registry is a source-grounded, multilingual data asset distinct from Source Registry, vetted Domain Seeds and on-demand Extended Knowledge. Broad coverage is compatible with few ready seeds. Candidates may be stored before review; provenance and explicit human approval are required before curated promotion; see [DOMAIN_REGISTRY.md](DOMAIN_REGISTRY.md).
 
 Human–AI co-construction distinguishes saved view customization, personal interpretation, candidate professional revision and verified professional knowledge. Users retain active reasoning and can inspect, revise and extend proposals; no silent promotion is permitted. Learning motivation, goals and activities are separate dimensions described in [LEARNING_ENGINE.md](LEARNING_ENGINE.md). Long-term insights and cognitive companionship remain optional, event-grounded and non-diagnostic.
+
+
+## 11. Current Domain product decisions (ADR-010)
+
+Preset Domains are system-maintained broad scopes with multilingual names, definitions, boundaries, browsing categories, sparse typed relations, provenance and separate readiness. Custom Domains are unrestricted local scopes, including overlapping academic topics, hobbies or games. Both share one schema and downstream learning infrastructure. Global preset coverage must not require prebuilding every Subdomain/Topic/Concept hierarchy.
+
+A Domain describes scope. A Knowledge Space is its persistent personal environment; begin with one primary space per selected Domain. Internal learning structures are loaded from an approved seed or created progressively after entry. An empty space and a catalog entry without a seed are valid. Category membership is navigation, not an ontological parent. Domain relations are not prerequisites or study sequences.
+
+Search local preset/custom labels and aliases; duplicate suggestions do not block custom creation. Optional AI/web discovery proposes editable metadata, sources and relations. Offline manual creation must work. Normal preset browsing uses approved defaults; optional candidate preview is explicitly labeled. No multi-user identity resolution or global merging.
+
+Users can add sources to any space, including a preset-based space, without administrative approval. Personal acceptance, metadata review, source checks and claim verification are independent. Personal layout, learning-structure customization, explanations, professional revision proposals and reviewed knowledge have distinct stores/flows; no deliberate AI errors or silent canonical mutation.
+
+Astronomy and Latin are preset demos. Fitness and Nutrition and Stellaris are custom demos; Stellaris is the primary custom lifecycle test. The four use the same space/source infrastructure. UI, discovery, seed loading, internal trees and full learning loops remain future work.
+
+Track A constructs a broad but shallow versioned preset data asset. Track B develops the application incrementally. Neither requires the other to finish first. See [DOMAIN_ARCHITECTURE](DOMAIN_ARCHITECTURE.md), [SOURCE_REGISTRY](SOURCE_REGISTRY.md) and the linked implementation tasks.

@@ -1,0 +1,26 @@
+{
+  "format_version": 1,
+  "batch_id": "mock-stellaris-associations-v1",
+  "associations": [
+    {
+      "identity_key": "mock:sources:stellaris",
+      "candidate": {
+        "payload": {
+          "kind": "domain_source",
+          "domain_id": "domain_8900c93e-c519-5c59-b4ef-76c1ec715102",
+          "source_id": "source_839d95f4-b1e0-5de6-8648-8cc87fa9cf8f",
+          "rationale": "Synthetic fixture for shared source services",
+          "intended_use": "Metadata workflow demonstration",
+          "authority_scope": "None established",
+          "limitations": "Fictional game scope only; patch/DLC compatibility unverified"
+        },
+        "provenance": {
+          "origin": "test_fixture",
+          "actor": "fixture-author",
+          "rationale": "Synthetic architecture example only",
+          "unsupported_reason": "Not researched, acquired or professionally verified"
+        }
+      }
+    }
+  ]
+}

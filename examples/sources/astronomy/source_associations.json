@@ -1,0 +1,26 @@
+{
+  "format_version": 1,
+  "batch_id": "mock-astronomy-associations-v1",
+  "associations": [
+    {
+      "identity_key": "mock:sources:astronomy",
+      "candidate": {
+        "payload": {
+          "kind": "domain_source",
+          "domain_id": "domain_be17a8f3-c87e-5cc3-8a05-b38f74e6852d",
+          "source_id": "source_303b48c3-4d0c-5756-81a2-b66b16ee49b1",
+          "rationale": "Synthetic fixture for shared source services",
+          "intended_use": "Metadata workflow demonstration",
+          "authority_scope": "None established",
+          "limitations": "No astronomy claims verified"
+        },
+        "provenance": {
+          "origin": "test_fixture",
+          "actor": "fixture-author",
+          "rationale": "Synthetic architecture example only",
+          "unsupported_reason": "Not researched, acquired or professionally verified"
+        }
+      }
+    }
+  ]
+}

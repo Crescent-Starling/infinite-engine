@@ -1,0 +1,257 @@
+{
+  "$defs": {
+    "EvidenceReference": {
+      "additionalProperties": false,
+      "properties": {
+        "source_id": {
+          "pattern": "^[a-z_]+_[0-9a-f-]{36}$",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "source_version": {
+          "minimum": 1,
+          "title": "Source Version",
+          "type": "integer"
+        },
+        "anchor": {
+          "minLength": 1,
+          "title": "Anchor",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source_id",
+        "source_version",
+        "anchor"
+      ],
+      "title": "EvidenceReference",
+      "type": "object"
+    },
+    "Pin": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^[a-z_]+_[0-9a-f-]{36}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "version": {
+          "minimum": 1,
+          "title": "Version",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "id",
+        "version"
+      ],
+      "title": "Pin",
+      "type": "object"
+    },
+    "Provenance": {
+      "additionalProperties": false,
+      "properties": {
+        "origin": {
+          "enum": [
+            "human",
+            "ai",
+            "taxonomy_import",
+            "test_fixture"
+          ],
+          "title": "Origin",
+          "type": "string"
+        },
+        "actor": {
+          "minLength": 1,
+          "title": "Actor",
+          "type": "string"
+        },
+        "rationale": {
+          "minLength": 1,
+          "title": "Rationale",
+          "type": "string"
+        },
+        "generator": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Generator"
+        },
+        "input_hash": {
+          "anyOf": [
+            {
+              "pattern": "^[a-f0-9]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Input Hash"
+        },
+        "evidence": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/EvidenceReference"
+          },
+          "title": "Evidence",
+          "type": "array"
+        },
+        "unsupported_reason": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Unsupported Reason"
+        }
+      },
+      "required": [
+        "origin",
+        "actor",
+        "rationale"
+      ],
+      "title": "Provenance",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "format_version": {
+      "const": 1,
+      "default": 1,
+      "title": "Format Version",
+      "type": "integer"
+    },
+    "profile_id": {
+      "minLength": 1,
+      "title": "Profile Id",
+      "type": "string"
+    },
+    "revision": {
+      "minimum": 1,
+      "title": "Revision",
+      "type": "integer"
+    },
+    "domain": {
+      "$ref": "#/$defs/Pin"
+    },
+    "purpose": {
+      "minLength": 1,
+      "title": "Purpose",
+      "type": "string"
+    },
+    "languages": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Languages",
+      "type": "array"
+    },
+    "queries": {
+      "default": [],
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Queries",
+      "type": "array"
+    },
+    "provider_allowlist": {
+      "default": [],
+      "items": {
+        "pattern": "^[a-z_]+_[0-9a-f-]{36}$",
+        "type": "string"
+      },
+      "title": "Provider Allowlist",
+      "type": "array"
+    },
+    "adapters": {
+      "items": {
+        "enum": [
+          "web",
+          "pdf",
+          "text",
+          "csv",
+          "json",
+          "xml",
+          "api_metadata",
+          "image"
+        ],
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Adapters",
+      "type": "array"
+    },
+    "inclusion": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Inclusion",
+      "type": "array"
+    },
+    "exclusion": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Exclusion",
+      "type": "array"
+    },
+    "max_candidates": {
+      "default": 10,
+      "maximum": 100,
+      "minimum": 1,
+      "title": "Max Candidates",
+      "type": "integer"
+    },
+    "max_requests": {
+      "default": 0,
+      "maximum": 100,
+      "minimum": 0,
+      "title": "Max Requests",
+      "type": "integer"
+    },
+    "network_requested": {
+      "default": false,
+      "title": "Network Requested",
+      "type": "boolean"
+    },
+    "provenance": {
+      "$ref": "#/$defs/Provenance"
+    }
+  },
+  "required": [
+    "profile_id",
+    "revision",
+    "domain",
+    "purpose",
+    "languages",
+    "adapters",
+    "inclusion",
+    "exclusion",
+    "provenance"
+  ],
+  "title": "SearchProfile",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

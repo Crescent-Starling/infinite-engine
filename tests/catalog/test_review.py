@@ -350,8 +350,8 @@ def test_forward_migration_preserves_v1_history(tmp_path: Path) -> None:
     with Registry(path) as db:
         assert db.get(identity).version == 1
     with sqlite3.connect(path) as connection:
-        assert connection.execute("PRAGMA user_version").fetchone()[0] == 2
-        assert connection.execute("SELECT count(*) FROM schema_migration").fetchone()[0] == 2
+        assert connection.execute("PRAGMA user_version").fetchone()[0] == 5
+        assert connection.execute("SELECT count(*) FROM schema_migration").fetchone()[0] == 5
 
 
 def test_exact_source_revision_requires_approval(tmp_path: Path) -> None:

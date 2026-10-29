@@ -1,0 +1,251 @@
+{
+  "$defs": {
+    "AssociationCandidate": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "default": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "payload": {
+          "$ref": "#/$defs/DomainSource"
+        },
+        "provenance": {
+          "$ref": "#/$defs/Provenance"
+        }
+      },
+      "required": [
+        "payload",
+        "provenance"
+      ],
+      "title": "AssociationCandidate",
+      "type": "object"
+    },
+    "AssociationEntry": {
+      "additionalProperties": false,
+      "properties": {
+        "identity_key": {
+          "minLength": 1,
+          "title": "Identity Key",
+          "type": "string"
+        },
+        "expected_version": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Expected Version",
+          "type": "integer"
+        },
+        "candidate": {
+          "$ref": "#/$defs/AssociationCandidate"
+        }
+      },
+      "required": [
+        "identity_key",
+        "candidate"
+      ],
+      "title": "AssociationEntry",
+      "type": "object"
+    },
+    "DomainSource": {
+      "additionalProperties": false,
+      "properties": {
+        "intended_learning_level": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Intended Learning Level"
+        },
+        "kind": {
+          "const": "domain_source",
+          "default": "domain_source",
+          "title": "Kind",
+          "type": "string"
+        },
+        "domain_id": {
+          "pattern": "^[a-z_]+_[0-9a-f-]{36}$",
+          "title": "Domain Id",
+          "type": "string"
+        },
+        "source_id": {
+          "pattern": "^[a-z_]+_[0-9a-f-]{36}$",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "rationale": {
+          "minLength": 1,
+          "title": "Rationale",
+          "type": "string"
+        },
+        "intended_use": {
+          "minLength": 1,
+          "title": "Intended Use",
+          "type": "string"
+        },
+        "authority_scope": {
+          "minLength": 1,
+          "title": "Authority Scope",
+          "type": "string"
+        },
+        "limitations": {
+          "minLength": 1,
+          "title": "Limitations",
+          "type": "string"
+        }
+      },
+      "required": [
+        "domain_id",
+        "source_id",
+        "rationale",
+        "intended_use",
+        "authority_scope",
+        "limitations"
+      ],
+      "title": "DomainSource",
+      "type": "object"
+    },
+    "EvidenceReference": {
+      "additionalProperties": false,
+      "properties": {
+        "source_id": {
+          "pattern": "^[a-z_]+_[0-9a-f-]{36}$",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "source_version": {
+          "minimum": 1,
+          "title": "Source Version",
+          "type": "integer"
+        },
+        "anchor": {
+          "minLength": 1,
+          "title": "Anchor",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source_id",
+        "source_version",
+        "anchor"
+      ],
+      "title": "EvidenceReference",
+      "type": "object"
+    },
+    "Provenance": {
+      "additionalProperties": false,
+      "properties": {
+        "origin": {
+          "enum": [
+            "human",
+            "ai",
+            "taxonomy_import",
+            "test_fixture"
+          ],
+          "title": "Origin",
+          "type": "string"
+        },
+        "actor": {
+          "minLength": 1,
+          "title": "Actor",
+          "type": "string"
+        },
+        "rationale": {
+          "minLength": 1,
+          "title": "Rationale",
+          "type": "string"
+        },
+        "generator": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Generator"
+        },
+        "input_hash": {
+          "anyOf": [
+            {
+              "pattern": "^[a-f0-9]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Input Hash"
+        },
+        "evidence": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/EvidenceReference"
+          },
+          "title": "Evidence",
+          "type": "array"
+        },
+        "unsupported_reason": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Unsupported Reason"
+        }
+      },
+      "required": [
+        "origin",
+        "actor",
+        "rationale"
+      ],
+      "title": "Provenance",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "format_version": {
+      "const": 1,
+      "default": 1,
+      "title": "Format Version",
+      "type": "integer"
+    },
+    "batch_id": {
+      "minLength": 1,
+      "title": "Batch Id",
+      "type": "string"
+    },
+    "associations": {
+      "items": {
+        "$ref": "#/$defs/AssociationEntry"
+      },
+      "minItems": 1,
+      "title": "Associations",
+      "type": "array"
+    }
+  },
+  "required": [
+    "batch_id",
+    "associations"
+  ],
+  "title": "SourceAssociations",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

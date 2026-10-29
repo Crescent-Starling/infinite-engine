@@ -68,3 +68,47 @@ No domain dataset, license, source-verification, migration, AI or course benchma
 - Forward-migration test opens a v1-shaped database, verifies original revision preservation, and reopens with both migration checksums. 001_registry.sql is unchanged.
 - Offline wheel build passed; both SQL migrations are included, and the original offline demo initializes the v2 database successfully from the extracted wheel.
 - Initial line-length/type-check issues were corrected. No dependencies added. No real data approved, external sources checked or R3 work performed. Hosted CI status is reported separately after branch publication.
+
+## R3 observed verification — 2026-10-29
+
+- `UV_CACHE_DIR=/tmp/infinite-engine-uv-cache make setup`: passed (`uv sync --frozen`, frontend `npm ci`); dependency manifests/locks unchanged.
+- `UV_CACHE_DIR=/tmp/infinite-engine-uv-cache make check`: passed after R3 changes: Ruff format/lint, strict mypy (18 files), **71 backend tests** (21 new bootstrap/pilot tests), document references (18 documents, zero errors), frontend format/ESLint/tsc, **1 Vitest test**, Vite production build.
+- Tests cover byte-identical offline/no-key generation, invalid checksums/truncated/missing/escaping inputs without output, duplicate IDs/native codes, missing mapping targets and inconsistent releases, explicit unmapped coverage, source category coverage, shared membership/multi-parent organization, homonymous concepts, unsupported extension-field rejection, pinned-revision approval closure, native identity preservation and unambiguous tuple-key encoding, migration from R2, and actual bootstrap CLI execution. Existing R1/R2 regression suites pass.
+- Manual local run generated 55 candidates and ten editable CSVs, with blank decisions and no curated entries. Bootstrap into two fresh directories produced identical candidate/report bytes (`cmp` passed); re-import returned identical revision JSON. The local pilot database and review files are ignored under `.local/`. Preliminary generated artifacts were preserved separately under `.local/r3-preview/` while final identity encoding was finalized.
+- `uv build --offline --wheel` passed; wheel inspection confirmed bootstrap and migrations 001/002/003 are packaged. `git diff --check` passed. No migration 001/002 edits, frontend behavior changes, source checks, human approvals, seed readiness or network model calls were introduced.
+
+Limits: source discovery was bounded read-only inspection; some pages were incomplete/inaccessible, and recommendations remain candidates. Checksums pin local saved metadata, not full archived remote documents or authenticated publisher signatures. Specialized morphology, quantitative health applicability, multimodal evidence and version-scoped game rules remain unsupported. No spreadsheet desktop application round-trip or real owner approval was performed. R4 final acceptance and broad collection are not part of this execution; no R3 remote CI run is claimed.
+
+## Domain architecture revision observed verification — 2026-10-29
+
+Inspected AGENTS, README, PROJECT_SPEC, ARCHITECTURE, DATA_CONTRACTS, DEMOS and PLANS; existing DOMAIN_REGISTRY/ADRs/tasks, catalog contracts/storage/review/bootstrap, migrations 001–003, fixtures/tests, setup manifests/scripts and CI. The worktree contained the previous uncommitted R3 implementation; it was preserved on feature/domain-architecture-revision. No published history or unrelated application modules were rewritten.
+
+Identified and corrected: missing preset/custom origin; category_ids previously conflated with semantic DomainRelation; R3 context categories modeled as Domain parents; four demo scopes not distinguished by management; implicit seed-first entry; source types/approval conventions insufficient for private collections; obsolete documentation claiming no importer. No multi-user resolution subsystem existed, and none was added. Historical R3 records remain unchanged and explicitly unclassified rather than becoming presets automatically.
+
+Executed results:
+
+- `UV_CACHE_DIR=/tmp/infinite-engine-uv-cache make setup`: passed; locked Python dependencies and npm install; no dependency changes.
+- `UV_CACHE_DIR=/tmp/infinite-engine-uv-cache make check`: passed; Ruff format/lint, mypy (21 files), **86 backend tests** including **15 new architecture tests**, 22 documentation files with zero broken local references, frontend formatting/ESLint/tsc, **1 Vitest test**, Vite production build.
+- `uv run --frozen python scripts/registry/demo_domain_architecture.py`: passed; 12 fixture records, four shared primary spaces, overlapping custom creation true, preset unchanged true, zero curated records/checks and seed_ready=false. All content is synthetic; no network calls or human approval.
+- Forward migration tested from schema 3, preserving old snapshot/hash, approved history and legacy directed edge rows; append-only triggers remain active. A manual read-only backup of the existing R3 v3 database also upgraded successfully: all 55 snapshot/hash pairs and relations unchanged, original CSV packet dry-run readable, original batch replay idempotent, and generated bundle bytes unchanged. The original .local/r3.sqlite was left at v3.
+- `uv build --offline --wheel`: passed. Wheel includes spaces/bootstrap modules and migrations 001–004. `git diff --check`: passed. Tracked-file checks found no .env/private-key/database files; .local database and review packets are ignored.
+
+Tests cover shared preset/custom infrastructure, multilingual same-name custom creation, unique slug allocation, no-seed operation, preset default/candidate separation, unreviewed personal source acceptance, immutable curated defaults under personal overrides, independent source checks and review, source identity duplicates, malformed URLs, unknown licensing, category endpoint validation, relation direction/symmetry/cycles/self-edges, origin immutability, exact preset-reference types, old CSV compatibility and explicit null clearing of added fields. Custom local updates remain usable without repeat registry approval.
+
+Not executed/implemented: API/UI lifecycle or editor tests, live AI discovery, seed loading, source acquisition/claim verification, bulk FORD/LCC/Wikidata import, broad coverage generation or curated release packaging. Their acceptance tests/dependencies are specified in the two new tasks. No new remote CI run, push, merge or source-verification result is claimed.
+
+## Source discovery/acquisition architecture — 2026-10-29
+
+Observed on the shared working tree (including pre-existing/concurrent Domain/discovery specification changes):
+
+- PASS final `make setup`: frozen Python sync, locked frontend install (233 packages, npm reported zero vulnerabilities).
+- PASS `make format`: Python/frontend formatting; subsequent format checks passed.
+- PASS final `make check`: Ruff format/lint, mypy (31 source files), pytest (124 passed, including 21 new source architecture tests), documentation links (29 documents, zero errors), frontend Prettier/ESLint/TypeScript, Vitest (1 passed), production build.
+- PASS `.venv/bin/python scripts/demo_sources.py`: four mock Domain manifests imported/replayed, proposed plans validated; restart retained 12 artifact revisions; no downloads.
+- PASS `.venv/bin/python -m infinite_engine.sources schemas/sources --schemas`: generated four schemas; tests compare schema output and validate all examples with JSON Schema and runtime contracts.
+- PASS `.venv/bin/python /Users/crescent/.codex/skills/.system/skill-creator/scripts/quick_validate.py skills/source-discovery`: skill format valid. This verifies structure, not actual agent execution.
+- PASS `git diff --check` and a final documentation link check.
+
+Earlier attempts: default-sandbox setup failed accessing the uv cache; approved setup succeeded. Initial full checks found three stale migration-version assertions and one skill wording assertion; updated for migration 005 and explicit human choices. A subsequent check passed all backend tests but found the frontend prettier executable missing during concurrent workspace work; locked setup restored dependencies and the final complete check passed.
+
+No network source search, content acquisition, real parser/adapter, API/UI source integration, complete RAG or professional claim verification was tested or implemented. Tests use synthetic sources and supplied metadata only, with no API key. Existing suites retain real legacy snapshot/review compatibility checks; new source tests cover additive migration, atomic rollback, replay/restart, revision/hash/reference errors, eight native locator cases, unknown rights, malformed YAML and partial-result contracts. Full M1/M2 acceptance remains pending.

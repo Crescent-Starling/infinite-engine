@@ -1,0 +1,23 @@
+format_version: 1
+profile_id: mock-fitness-nutrition
+revision: 1
+domain:
+  id: domain_7cd7a86f-3d18-5b0a-b601-a46a2c9f0f15
+  version: 1
+purpose: Prepare reviewable Fitness & Nutrition source candidates
+languages:
+- en
+queries:
+- Fitness & Nutrition introductory references
+adapters:
+- text
+- image
+inclusion:
+- Explicit provenance and edition/version metadata
+exclusion:
+- Unattributed copies or unsupported authority claims
+provenance:
+  origin: test_fixture
+  actor: fixture-author
+  rationale: Synthetic architecture example only
+  unsupported_reason: Not researched, acquired or professionally verified

@@ -1,0 +1,26 @@
+{
+  "format_version": 1,
+  "batch_id": "mock-latin-associations-v1",
+  "associations": [
+    {
+      "identity_key": "mock:sources:latin",
+      "candidate": {
+        "payload": {
+          "kind": "domain_source",
+          "domain_id": "domain_97883540-a313-5a4d-bc2e-540674ebf292",
+          "source_id": "source_3d79421e-017d-58dc-9593-b5da621e961e",
+          "rationale": "Synthetic fixture for shared source services",
+          "intended_use": "Metadata workflow demonstration",
+          "authority_scope": "None established",
+          "limitations": "Edition/translation and passage checks pending"
+        },
+        "provenance": {
+          "origin": "test_fixture",
+          "actor": "fixture-author",
+          "rationale": "Synthetic architecture example only",
+          "unsupported_reason": "Not researched, acquired or professionally verified"
+        }
+      }
+    }
+  ]
+}

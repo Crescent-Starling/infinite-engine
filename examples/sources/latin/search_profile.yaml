@@ -1,0 +1,23 @@
+format_version: 1
+profile_id: mock-latin
+revision: 1
+domain:
+  id: domain_97883540-a313-5a4d-bc2e-540674ebf292
+  version: 1
+purpose: Prepare reviewable Latin source candidates
+languages:
+- en
+queries:
+- Latin introductory references
+adapters:
+- pdf
+- image
+inclusion:
+- Explicit provenance and edition/version metadata
+exclusion:
+- Unattributed copies or unsupported authority claims
+provenance:
+  origin: test_fixture
+  actor: fixture-author
+  rationale: Synthetic architecture example only
+  unsupported_reason: Not researched, acquired or professionally verified

@@ -1,7 +1,7 @@
 """Version 1 candidate contracts. Validation does not establish truth or approval."""
 
 from datetime import date
-from typing import Annotated, Literal, Self
+from typing import Annotated, Any, ClassVar, Literal, Self
 
 from pydantic import (
     AwareDatetime,
@@ -9,7 +9,9 @@ from pydantic import (
     ConfigDict,
     Field,
     HttpUrl,
+    SerializerFunctionWrapHandler,
     field_validator,
+    model_serializer,
     model_validator,
 )
 
@@ -22,6 +24,16 @@ EntityID = Annotated[str, Field(pattern=r"^[a-z_]+_[0-9a-f-]{36}$")]
 
 class Contract(BaseModel):
     model_config = ConfigDict(extra="forbid", frozen=True, str_strip_whitespace=True)
+    compatibility_fields: ClassVar[tuple[str, ...]] = ()
+
+    @model_serializer(mode="wrap")
+    def preserve_legacy_shape(self, handler: SerializerFunctionWrapHandler) -> dict[str, Any]:
+        # Additive optional metadata must not change historical snapshot hashes or bundle receipts.
+        values: dict[str, Any] = handler(self)
+        for name in self.compatibility_fields:
+            if values.get(name) is None:
+                values.pop(name, None)
+        return values
 
 
 class Label(Contract):
@@ -52,6 +64,17 @@ class Labeled(Contract):
 
 
 class Domain(Labeled):
+    compatibility_fields = ("origin", "creation_method")
+    # None is a legacy missing value, never an inferred preset/custom classification.
+    origin: Literal["preset", "custom"] | None = None
+    creation_method: Literal["manual", "ai_assisted", "classification_import"] | None = None
+
+    @model_validator(mode="after")
+    def management_metadata(self) -> Self:
+        if (self.origin is None) != (self.creation_method is None):
+            raise ValueError("origin and creation_method must be supplied together")
+        return self
+
     kind: Literal["domain"] = "domain"
     slug: Annotated[str, Field(pattern=r"^[a-z0-9]+(?:-[a-z0-9]+)*$")]
     definition: Text
@@ -60,6 +83,23 @@ class Domain(Labeled):
 
 
 class Source(Labeled):
+    compatibility_fields = (
+        "language",
+        "coverage_description",
+        "access_conditions",
+        "bibliographic_reference",
+        "resource_identity",
+        "discovery_method",
+        "updated_on",
+    )
+    language: Annotated[str, Field(pattern=r"^[A-Za-z]{2,8}(?:-[A-Za-z0-9]{1,8})*$")] | None = None
+    coverage_description: Text | None = None
+    access_conditions: Text | None = None
+    bibliographic_reference: Text | None = None
+    resource_identity: Text | None = None
+    discovery_method: Literal["system_recommendation", "ai_discovery", "user_added"] | None = None
+    updated_on: date | None = None
+
     kind: Literal["source"] = "source"
     source_kind: Literal[
         "institution",
@@ -69,6 +109,11 @@ class Source(Labeled):
         "reference",
         "technical_documentation",
         "taxonomy",
+        "local_document",
+        "book",
+        "paper",
+        "website",
+        "other",
     ]
     creator: Text | None = None
     uri: HttpUrl | None = None
@@ -77,6 +122,19 @@ class Source(Labeled):
     license: Text | None = None
     version_tag: Text | None = None
     content_hash: Digest | None = None
+
+
+class Category(Labeled):
+    kind: Literal["category"] = "category"
+    slug: Annotated[str, Field(pattern=r"^[a-z0-9]+(?:-[a-z0-9]+)*$")]
+    description: Text
+
+
+class DomainCategory(Contract):
+    kind: Literal["domain_category"] = "domain_category"
+    domain_id: EntityID
+    category_id: EntityID
+    rationale: Text
 
 
 class Topic(Labeled):
@@ -94,14 +152,24 @@ class DomainRelation(Contract):
     kind: Literal["domain_relation"] = "domain_relation"
     from_domain_id: EntityID
     to_domain_id: EntityID
-    predicate: Literal["SUBDOMAIN_OF", "OVERLAPS_WITH", "RELATED_TO", "APPLIES_TO"]
+    predicate: Literal[
+        "SUBDOMAIN_OF",
+        "OVERLAPS_WITH",
+        "DRAWS_ON",
+        "USES_METHODS_FROM",
+        "APPLIES_KNOWLEDGE_FROM",
+        "RELATED_CONTEXT",
+        "REFERENCES_PRESET",
+        "RELATED_TO",
+        "APPLIES_TO",  # Legacy only; no silent direction/meaning conversion.
+    ]
     rationale: Text
 
     @model_validator(mode="after")
     def endpoints(self) -> Self:
         if self.from_domain_id == self.to_domain_id:
             raise ValueError("Self relations are invalid")
-        if self.predicate in {"OVERLAPS_WITH", "RELATED_TO"}:
+        if self.predicate in {"OVERLAPS_WITH", "RELATED_TO", "RELATED_CONTEXT"}:
             first, second = sorted((self.from_domain_id, self.to_domain_id))
             object.__setattr__(self, "from_domain_id", first)
             object.__setattr__(self, "to_domain_id", second)
@@ -109,6 +177,8 @@ class DomainRelation(Contract):
 
 
 class DomainSource(Contract):
+    compatibility_fields = ("intended_learning_level",)
+    intended_learning_level: Text | None = None
     kind: Literal["domain_source"] = "domain_source"
     domain_id: EntityID
     source_id: EntityID
@@ -132,8 +202,41 @@ class DomainConcept(Contract):
     rationale: Text
 
 
+class TaxonomyEntry(Contract):
+    """A native classification record pinned to a source release revision."""
+
+    kind: Literal["taxonomy_entry"] = "taxonomy_entry"
+    source_id: EntityID
+    source_version: Annotated[int, Field(strict=True, ge=1)]
+    release_tag: Text
+    code: Text
+    original_label: Text
+    original_language: Text
+    original_path: Text  # Publisher code path, a locator rather than local graph edges.
+
+
+class DomainMapping(Contract):
+    kind: Literal["domain_mapping"] = "domain_mapping"
+    domain_id: EntityID
+    taxonomy_entry_id: EntityID
+    taxonomy_entry_version: Annotated[int, Field(strict=True, ge=1)]
+    mapping_type: Literal["exact", "narrower_than", "broader_than", "related"]
+    rationale: Text
+
+
 Payload = Annotated[
-    Domain | Source | Topic | Concept | DomainRelation | DomainSource | DomainTopic | DomainConcept,
+    Domain
+    | Source
+    | Topic
+    | Concept
+    | DomainRelation
+    | DomainSource
+    | DomainTopic
+    | DomainConcept
+    | TaxonomyEntry
+    | DomainMapping
+    | Category
+    | DomainCategory,
     Field(discriminator="kind"),
 ]
 

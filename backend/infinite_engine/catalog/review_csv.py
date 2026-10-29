@@ -29,7 +29,10 @@ def uncell(value: str) -> str:
 
 
 def columns(revision: Revision) -> list[str]:
-    fields = [name for name in type(revision.candidate.payload).model_fields if name != "kind"]
+    payload = revision.candidate.payload
+    names = type(payload).model_fields
+    added = payload.compatibility_fields
+    fields = [name for name in names if name != "kind" and name not in added] + list(added)
     return BASE_COLUMNS + [f"{side}.{name}" for name in fields for side in ("original", "proposed")]
 
 
@@ -76,7 +79,9 @@ def export_review(
                         "reviewer": "",
                         "reason": "",
                     }
-                    for name, value in item.candidate.payload.model_dump(mode="json").items():
+                    data = item.candidate.payload.model_dump(mode="json")
+                    for name in type(item.candidate.payload).model_fields:
+                        value = data.get(name)
                         if name != "kind":
                             for side in ("original", "proposed"):
                                 row[f"{side}.{name}"] = json.dumps(
@@ -132,7 +137,21 @@ def read_review(registry: Registry, directory: Path) -> tuple[str, list[dict[str
         )
         with (directory / filename).open(encoding="utf-8-sig", newline="") as stream:
             reader = csv.DictReader(stream, strict=True)
-            if reader.fieldnames != columns(template):
+            full_columns = columns(template)
+            added = template.candidate.payload.compatibility_fields
+            legacy_columns = [
+                name
+                for name in full_columns
+                if name.removeprefix("original.").removeprefix("proposed.") not in added
+            ]
+            has_new_metadata = any(
+                name in item.candidate.payload.model_dump()
+                for item in expected.values()
+                if item.candidate.payload.kind == kind
+                for name in added
+            )
+            allowed = [full_columns] if has_new_metadata else [full_columns, legacy_columns]
+            if reader.fieldnames not in allowed:
                 errors.append(f"{filename}:1: columns are missing, reordered or unexpected")
                 continue
             try:
@@ -155,8 +174,10 @@ def read_review(registry: Registry, directory: Path) -> tuple[str, list[dict[str
                             raise RegistryError("Protected version/payload_hash was modified")
                         payload = original.candidate.payload.model_dump(mode="json")
                         proposed = {"kind": kind}
-                        for name, value in payload.items():
-                            if name != "kind":
+                        for column in reader.fieldnames:
+                            if column.startswith("original."):
+                                name = column.removeprefix("original.")
+                                value = payload.get(name)
                                 if json.loads(decoded[f"original.{name}"]) != value:
                                     raise RegistryError(f"Protected original.{name} was modified")
                                 proposed[name] = json.loads(decoded[f"proposed.{name}"])

@@ -1,0 +1,296 @@
+{
+  "batch_id": "architecture-foundation-v1",
+  "entries": [
+    {
+      "candidate": {
+        "payload": {
+          "creation_method": "manual",
+          "definition": "Synthetic scope description for Astronomy.",
+          "domain_type": "academic",
+          "kind": "domain",
+          "labels": [
+            {
+              "language": "en",
+              "text": "Astronomy"
+            },
+            {
+              "language": "zh",
+              "text": "天文学"
+            }
+          ],
+          "origin": "preset",
+          "scope_note": "Test fixture; no ready seed, knowledge hierarchy or verified facts.",
+          "slug": "astronomy"
+        },
+        "provenance": {
+          "actor": "fixture-author",
+          "origin": "test_fixture",
+          "rationale": "Architecture contract fixture only.",
+          "unsupported_reason": "Synthetic metadata; not an approved registry release or sourced definition."
+        }
+      },
+      "identity_key": "architecture:astronomy"
+    },
+    {
+      "candidate": {
+        "payload": {
+          "creation_method": "manual",
+          "definition": "Synthetic scope description for Latin.",
+          "domain_type": "language",
+          "kind": "domain",
+          "labels": [
+            {
+              "language": "en",
+              "text": "Latin"
+            },
+            {
+              "language": "zh",
+              "text": "拉丁语"
+            }
+          ],
+          "origin": "preset",
+          "scope_note": "Test fixture; no ready seed, knowledge hierarchy or verified facts.",
+          "slug": "latin"
+        },
+        "provenance": {
+          "actor": "fixture-author",
+          "origin": "test_fixture",
+          "rationale": "Architecture contract fixture only.",
+          "unsupported_reason": "Synthetic metadata; not an approved registry release or sourced definition."
+        }
+      },
+      "identity_key": "architecture:latin"
+    },
+    {
+      "candidate": {
+        "payload": {
+          "creation_method": "manual",
+          "definition": "Synthetic scope description for Fitness and Nutrition.",
+          "domain_type": "interdisciplinary",
+          "kind": "domain",
+          "labels": [
+            {
+              "language": "en",
+              "text": "Fitness and Nutrition"
+            },
+            {
+              "language": "zh",
+              "text": "健身与营养"
+            }
+          ],
+          "origin": "custom",
+          "scope_note": "Test fixture; no ready seed, knowledge hierarchy or verified facts.",
+          "slug": "fitness-nutrition"
+        },
+        "provenance": {
+          "actor": "fixture-author",
+          "origin": "test_fixture",
+          "rationale": "Architecture contract fixture only.",
+          "unsupported_reason": "Synthetic metadata; not an approved registry release or sourced definition."
+        }
+      },
+      "identity_key": "architecture:fitness-nutrition"
+    },
+    {
+      "candidate": {
+        "payload": {
+          "creation_method": "manual",
+          "definition": "Synthetic scope description for Stellaris.",
+          "domain_type": "game",
+          "kind": "domain",
+          "labels": [
+            {
+              "language": "en",
+              "text": "Stellaris"
+            },
+            {
+              "language": "zh",
+              "text": "群星"
+            }
+          ],
+          "origin": "custom",
+          "scope_note": "Test fixture; no ready seed, knowledge hierarchy or verified facts.",
+          "slug": "stellaris"
+        },
+        "provenance": {
+          "actor": "fixture-author",
+          "origin": "test_fixture",
+          "rationale": "Architecture contract fixture only.",
+          "unsupported_reason": "Synthetic metadata; not an approved registry release or sourced definition."
+        }
+      },
+      "identity_key": "architecture:stellaris"
+    },
+    {
+      "candidate": {
+        "payload": {
+          "description": "Synthetic browsing group; not an ontological parent.",
+          "kind": "category",
+          "labels": [
+            {
+              "language": "en",
+              "text": "Sciences"
+            },
+            {
+              "language": "zh",
+              "text": "科学"
+            }
+          ],
+          "slug": "science"
+        },
+        "provenance": {
+          "actor": "fixture-author",
+          "origin": "test_fixture",
+          "rationale": "Architecture contract fixture only.",
+          "unsupported_reason": "Synthetic metadata; not an approved registry release or sourced definition."
+        }
+      },
+      "identity_key": "architecture:science"
+    },
+    {
+      "candidate": {
+        "payload": {
+          "description": "Synthetic browsing group; not an ontological parent.",
+          "kind": "category",
+          "labels": [
+            {
+              "language": "en",
+              "text": "Humanities"
+            },
+            {
+              "language": "zh",
+              "text": "人文"
+            }
+          ],
+          "slug": "humanities"
+        },
+        "provenance": {
+          "actor": "fixture-author",
+          "origin": "test_fixture",
+          "rationale": "Architecture contract fixture only.",
+          "unsupported_reason": "Synthetic metadata; not an approved registry release or sourced definition."
+        }
+      },
+      "identity_key": "architecture:humanities"
+    },
+    {
+      "candidate": {
+        "payload": {
+          "category_id": "category_b356304c-9008-5aaf-8dd4-d43b29d5a94e",
+          "domain_id": "domain_beb43bba-95c2-5efb-89c3-d13a4937331d",
+          "kind": "domain_category",
+          "rationale": "Synthetic navigation membership only."
+        },
+        "provenance": {
+          "actor": "fixture-author",
+          "origin": "test_fixture",
+          "rationale": "Architecture contract fixture only.",
+          "unsupported_reason": "Synthetic metadata; not an approved registry release or sourced definition."
+        }
+      },
+      "identity_key": "architecture:astronomy:science"
+    },
+    {
+      "candidate": {
+        "payload": {
+          "category_id": "category_c9734852-d9f4-50c1-9929-70cf9163bbbe",
+          "domain_id": "domain_30e4efe4-475e-5e8a-998a-4a4b216e6257",
+          "kind": "domain_category",
+          "rationale": "Synthetic navigation membership only."
+        },
+        "provenance": {
+          "actor": "fixture-author",
+          "origin": "test_fixture",
+          "rationale": "Architecture contract fixture only.",
+          "unsupported_reason": "Synthetic metadata; not an approved registry release or sourced definition."
+        }
+      },
+      "identity_key": "architecture:latin:humanities"
+    },
+    {
+      "candidate": {
+        "payload": {
+          "from_domain_id": "domain_af1a0a30-5096-58ae-9046-b7989dbef3a9",
+          "kind": "domain_relation",
+          "predicate": "RELATED_CONTEXT",
+          "rationale": "Synthetic interest bridge; fictional rules do not support astronomical claims.",
+          "to_domain_id": "domain_beb43bba-95c2-5efb-89c3-d13a4937331d"
+        },
+        "provenance": {
+          "actor": "fixture-author",
+          "origin": "test_fixture",
+          "rationale": "Architecture contract fixture only.",
+          "unsupported_reason": "Synthetic metadata; not an approved registry release or sourced definition."
+        }
+      },
+      "identity_key": "architecture:context"
+    },
+    {
+      "candidate": {
+        "payload": {
+          "access_conditions": "No actual content supplied.",
+          "bibliographic_reference": "Test-only resource, not a real publication.",
+          "coverage_description": "Schema testing only.",
+          "discovery_method": "user_added",
+          "kind": "source",
+          "labels": [
+            {
+              "language": "en",
+              "text": "Synthetic bibliographic resource"
+            }
+          ],
+          "resource_identity": "fixture:shared-reference",
+          "source_kind": "book"
+        },
+        "provenance": {
+          "actor": "fixture-author",
+          "origin": "test_fixture",
+          "rationale": "Architecture contract fixture only.",
+          "unsupported_reason": "Synthetic metadata; not an approved registry release or sourced definition."
+        }
+      },
+      "identity_key": "architecture:source"
+    },
+    {
+      "candidate": {
+        "payload": {
+          "authority_scope": "No authority asserted.",
+          "domain_id": "domain_beb43bba-95c2-5efb-89c3-d13a4937331d",
+          "intended_use": "Test lookup only.",
+          "kind": "domain_source",
+          "limitations": "No real source or license claim.",
+          "rationale": "Fixture tests shared source identity.",
+          "source_id": "source_7b4e3780-4d62-57e6-b983-f8b880c8e4fa"
+        },
+        "provenance": {
+          "actor": "fixture-author",
+          "origin": "test_fixture",
+          "rationale": "Architecture contract fixture only.",
+          "unsupported_reason": "Synthetic metadata; not an approved registry release or sourced definition."
+        }
+      },
+      "identity_key": "architecture:astronomy:source"
+    },
+    {
+      "candidate": {
+        "payload": {
+          "authority_scope": "No authority asserted.",
+          "domain_id": "domain_af1a0a30-5096-58ae-9046-b7989dbef3a9",
+          "intended_use": "Test lookup only.",
+          "kind": "domain_source",
+          "limitations": "No real source or license claim.",
+          "rationale": "Fixture tests shared source identity.",
+          "source_id": "source_7b4e3780-4d62-57e6-b983-f8b880c8e4fa"
+        },
+        "provenance": {
+          "actor": "fixture-author",
+          "origin": "test_fixture",
+          "rationale": "Architecture contract fixture only.",
+          "unsupported_reason": "Synthetic metadata; not an approved registry release or sourced definition."
+        }
+      },
+      "identity_key": "architecture:stellaris:source"
+    }
+  ],
+  "format_version": 1
+}

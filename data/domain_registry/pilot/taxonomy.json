@@ -1,0 +1,64 @@
+{
+  "attribution": "UNESCO-UIS (2015), DOI 10.15220/978-92-9189-179-5-en. Selected code/label metadata, no publisher endorsement.",
+  "entries": [
+    {
+      "anchor": "PDF page 27; field 0533; Appendix I code hierarchy",
+      "code": "0533",
+      "label": "Physics",
+      "language": "en",
+      "path": "05/053/0533"
+    },
+    {
+      "anchor": "PDF page 14; field 0231; Appendix I code hierarchy",
+      "code": "0231",
+      "label": "Language acquisition",
+      "language": "en",
+      "path": "02/023/0231"
+    },
+    {
+      "anchor": "PDF page 49; field 1014; Appendix I code hierarchy",
+      "code": "1014",
+      "label": "Sports",
+      "language": "en",
+      "path": "10/101/1014"
+    },
+    {
+      "anchor": "PDF page 45; field 0915; Appendix I code hierarchy",
+      "code": "0915",
+      "label": "Therapy and rehabilitation",
+      "language": "en",
+      "path": "09/091/0915"
+    }
+  ],
+  "license": "CC BY-SA 3.0 IGO",
+  "license_locator": "https://www.uis.unesco.org/sites/default/files/medias/fichiers/2025/04/international-standard-classification-of-education-fields-of-education-and-training-2013-detailed-field-descriptions-2015-en.pdf#page=2",
+  "mappings": [
+    {
+      "code": "0533",
+      "domain_key": "astronomy",
+      "mapping_type": "narrower_than",
+      "rationale": "Local astronomy scope is narrower than the external physics field; mapping is an organizing proposal."
+    },
+    {
+      "code": "0231",
+      "domain_key": "latin",
+      "mapping_type": "narrower_than",
+      "rationale": "Latin acquisition is one language-specific scope; literary or philological study may require additional mappings."
+    },
+    {
+      "code": "1014",
+      "domain_key": "fitness-nutrition",
+      "mapping_type": "related",
+      "rationale": "Sports overlaps the activity portion; it does not cover the entire combined domain."
+    },
+    {
+      "code": "0915",
+      "domain_key": "fitness-nutrition",
+      "mapping_type": "related",
+      "rationale": "The field includes nutrition/dietetics context; the local domain is not a rehabilitation or clinical curriculum. The source excludes nutrition science to field 051; this is only a partial related mapping."
+    }
+  ],
+  "release_tag": "ISCED-F-2013/descriptions-2015",
+  "source_key": "unesco-isced-f-2013",
+  "source_version": 1
+}

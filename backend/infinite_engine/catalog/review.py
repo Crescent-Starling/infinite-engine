@@ -76,8 +76,29 @@ def _validate_curated(registry: Registry, approved: list[Revision]) -> None:
                 raise RegistryError("Evidence source revision must be explicitly approved")
         payload = item.candidate.payload
         values = payload.model_dump()
+        if payload.kind == "taxonomy_entry":
+            if (payload.source_id, payload.source_version) not in approved_versions:
+                raise RegistryError("Taxonomy source revision must be explicitly approved")
+        if payload.kind == "domain_mapping":
+            if (payload.taxonomy_entry_id, payload.taxonomy_entry_version) not in approved_versions:
+                raise RegistryError("Taxonomy entry revision must be explicitly approved")
+        if payload.kind == "domain_relation" and payload.predicate == "REFERENCES_PRESET":
+            source = effective[payload.from_domain_id].candidate.payload
+            target = effective[payload.to_domain_id].candidate.payload
+            if (
+                source.kind != "domain"
+                or target.kind != "domain"
+                or source.origin != "custom"
+                or target.origin != "preset"
+            ):
+                raise RegistryError("Curated REFERENCES_PRESET requires custom to preset")
         keys = {
+            "taxonomy_entry": ("source_id", "release_tag", "code"),
+            "domain_mapping": ("domain_id", "taxonomy_entry_id"),
+            "category": ("slug",),
+            "domain_category": ("domain_id", "category_id"),
             "domain": ("slug",),
+            "source": ("resource_identity",) if values.get("resource_identity") else (),
             "domain_relation": ("from_domain_id", "predicate", "to_domain_id"),
             "domain_source": ("domain_id", "source_id"),
             "domain_topic": ("domain_id", "topic_id"),
@@ -181,9 +202,9 @@ def apply_review(
                 before = original.candidate.payload.model_dump(mode="json")
                 after = proposed.payload.model_dump(mode="json")
                 action["changes"] = {
-                    key: {"before": before[key], "after": value}
-                    for key, value in after.items()
-                    if before[key] != value
+                    key: {"before": before.get(key), "after": after.get(key)}
+                    for key in sorted(before.keys() | after.keys())
+                    if before.get(key) != after.get(key)
                 }
                 provenance = original.candidate.provenance.model_dump()
                 provenance.update(

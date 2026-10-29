@@ -1,6 +1,6 @@
 # Domain Intelligence Registry — implementation proposal
 
-Status: R1 and R2 implemented under explicit owner requests; R3 pilot and R4 final acceptance remain planned. No real dataset is approved.
+Status: R1 and R2 implemented under explicit owner requests; R3 candidate pilot implemented; R4 final acceptance remains planned. No real dataset is approved.
 
 ## Historical planning baseline (before M0)
 
@@ -120,3 +120,10 @@ The review workflow, field-level provenance/taxonomy mapping tables and broad bo
 ## R2 implementation record — 2026-10-29
 
 Added 002 migration, atomic candidate bundles, DB-bound per-kind review CSVs, protected provenance, exact-version ledger decisions, curated projections, dry-run diffs, explicit actor/apply and idempotent receipts. The original 001 migration remains unchanged. ADR-008 records JSON label cells as a bounded simplification of separate label sheets. Synthetic CLI round-trip tests cover revise then approve; they do not approve any real domain data. R3 remains the next bounded task.
+
+
+## R3 implementation record — 2026-10-29
+
+Owner explicitly requested the four-domain pilot. ADR-009 adds independently reviewed taxonomy entries/mappings via migration 003, preserving 001/002. A pinned offline adapter generates 55 candidates with four target domains, four local parent contexts, nine sources and four external correspondences. All six requested recommendation categories are represented across the pilot. Stellaris remains explicitly unmapped. The selected UNESCO excerpt retains attribution, license, native codes/paths and source revision pins; AI correspondences remain separate pending suggestions.
+
+The saved inputs record bounded source discovery and unknowns; no full publications or game content, successful verification records, approvals or ready seeds are generated. Extension probes document the absent morphology, quantity/applicability, multimodal and game-version contracts. The current adapter targets fresh pilot stores; maintenance merging and broader collection require a later bounded task. Reproduction commands are in DOMAIN_REGISTRY; executed results are recorded in VALIDATION. Stop after R3; R4 is not implicitly authorized.
